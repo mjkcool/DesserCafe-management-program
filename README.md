@@ -8,33 +8,33 @@
 <br><br><br>
 ## Functions
 ### Main screen
-<img width=600px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
-It shows information about menus, orders, on order, earnings and current time.
+<img width=600px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>It shows information about menus, orders, on order, earnings and current time.
 <br><br>
 ### 1. Register new menu
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/86414454-eb15a200-bcfe-11ea-9100-24afd75dd789.PNG><br>
+info
 <br><br>
 ### 2. Modify menu
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+info
 <br><br>
 ### 3. Remove menu
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+info
 <br><br>
-### 4. Register new order
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+### 4. Choose menu & Cancel order
+info
 <br><br>
-### 5. Cancel order
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+### 5. Register new order
+info
 <br><br>
 ### 6. Execute(remove) order
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>info
 <br><br>
 ### 7. Save earnings
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>info
 <br><br>
 ### 8. Show earnings records(previous)
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>info
 <br><br>
 ### 9. Remove all of earnings records
-<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>info
 <br><br>
