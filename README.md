@@ -57,19 +57,16 @@ info
 <br><br>
 
 ### 7. Save earnings
-<img width=500px src=https://user-images.githubusercontent.com/53461080/86464019-94917d80-bd69-11ea-8a90-2eb0e168bb99.PNG>
-<br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/86464019-94917d80-bd69-11ea-8a90-2eb0e168bb99.PNG><br>
 info
 <br><br>
 
 ### 8. Show earnings records(previous)
-<img width=500px src=https://user-images.githubusercontent.com/53461080/86463986-8c394280-bd69-11ea-97e7-262811984834.PNG>
-<br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/86463986-8c394280-bd69-11ea-97e7-262811984834.PNG><br>
 info
 <br><br>
 
 ### 9. Remove all of earnings records
-<img width=500px src=https://user-images.githubusercontent.com/53461080/86464016-93f8e700-bd69-11ea-8848-acd92ff7fc0e.PNG>
-<br>
+<img width=500px src=https://user-images.githubusercontent.com/53461080/86464016-93f8e700-bd69-11ea-8848-acd92ff7fc0e.PNG><br>
 info
 <br><br>
