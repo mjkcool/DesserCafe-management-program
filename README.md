@@ -40,7 +40,7 @@
 | ------------- | ------------- |
 | <img src=https://user-images.githubusercontent.com/53461080/86427591-7f92fb00-bd25-11ea-9e9e-a76000e5b929.PNG>  | <img src=https://user-images.githubusercontent.com/53461080/86464014-93605080-bd69-11ea-96d9-4a3db4c2314e.PNG>  |
 
-&nbsp;You can add the menu to the order list by clicking the menu button on the main screen. Then, you will see the information you chose at the bottom of the main screen. There is no limit to the quantity, but there are only up to 2 types of menus that can be ordered. If the limit is exceeded, a warning message pops up.
+&nbsp;You can accumulate the menu(name, price)to the order list by clicking the menu button on the main screen. Then, you will see the information you chose at the bottom of the main screen. There is no limit to the quantity, but there are only up to 2 types of menus that can be ordered. If the limit is exceeded, a warning message pops up.
 <br>You can click the button on the bottom right to erase the selected menu information. Then, a message of cancellation pops up after the selection information is cleared
 <br><br>
 
@@ -66,12 +66,12 @@
 <br>So you can click the button '초기화' at the top to reset the current sales record as soon as save it to the record. There is no limit to do this.
 <br><br>
 
-### 8. Show earnings records(previous)
+### 8. Show earnings records
 <img width=500px src=https://user-images.githubusercontent.com/53461080/86463986-8c394280-bd69-11ea-97e7-262811984834.PNG><br>
 &nbsp;If you click button '지난 판매기록 보기', you can see the saved previous earning informations of date, selling price and number of orders. 14 pieces of information are shown. When new information is stored with all 14 of them full, the oldest information is deleted to maintain the number of records. The rows of the table go up one by one every time new information is added.
 <br><br>
 
 ### 9. Remove all of earnings records
 <img width=500px src=https://user-images.githubusercontent.com/53461080/86464016-93f8e700-bd69-11ea-8848-acd92ff7fc0e.PNG><br>
-&nbsp;info
+&nbsp;You can delete all records by pressing the button '모든 기록 초기화' on the left. (initializes)
 <br><br>
