@@ -40,7 +40,7 @@
 | ------------- | ------------- |
 | <img src=https://user-images.githubusercontent.com/53461080/86427591-7f92fb00-bd25-11ea-9e9e-a76000e5b929.PNG>  | <img src=https://user-images.githubusercontent.com/53461080/86464014-93605080-bd69-11ea-96d9-4a3db4c2314e.PNG>  |
 
-&nbsp;You can add the menu to the order list by clicking the menu button on the main screen. Then, you will see the information you chose at the bottom of the main screen. There is no limit to the quantity, but there are only up to two types of menus that can be ordered. If the limit is exceeded, a warning message pops up.
+&nbsp;You can add the menu to the order list by clicking the menu button on the main screen. Then, you will see the information you chose at the bottom of the main screen. There is no limit to the quantity, but there are only up to 2 types of menus that can be ordered. If the limit is exceeded, a warning message pops up.
 <br>You can click the button on the bottom right to erase the selected menu information. Then, a message of cancellation pops up after the selection information is cleared
 <br><br>
 
@@ -49,7 +49,7 @@
 | ------------- | ------------- |
 | <img src=https://user-images.githubusercontent.com/53461080/86427596-815cbe80-bd25-11ea-80fe-e022631796f0.PNG>  | <img src=https://user-images.githubusercontent.com/53461080/86427597-81f55500-bd25-11ea-9e4e-fb01e0d863fb.PNG>  |
 
-&nbsp;Select a menu and click the button on the bottom right to register the information as an order. The selected menu information is erased and added to the order list with number as a message of complete pops up. **The second column has two additional orders registered.*
+&nbsp;Select a menu and click the button on the bottom right to register the information as an order. The selected menu information is erased and added to the order list with number as a message of complete pops up. **The second column has 2 additional orders registered.*
 <br><br>
 
 ### 6. Process(remove) order
@@ -62,12 +62,13 @@
 
 ### 7. Save earnings
 <img width=500px src=https://user-images.githubusercontent.com/53461080/86464019-94917d80-bd69-11ea-8a90-2eb0e168bb99.PNG><br>
-&nbsp;info
+&nbsp;This movement is the same as the current earnings initialization. Earning is accumulated after the previous initialization with the order informations being registered.
+<br>So you can click the button '초기화' at the top to reset the current sales record as soon as save it to the record. There is no limit to do this.
 <br><br>
 
 ### 8. Show earnings records(previous)
 <img width=500px src=https://user-images.githubusercontent.com/53461080/86463986-8c394280-bd69-11ea-97e7-262811984834.PNG><br>
-&nbsp;info
+&nbsp;If you click button '지난 판매기록 보기', you can see the saved previous earning informations of date, selling price and number of orders. 14 pieces of information are shown. When new information is stored with all 14 of them full, the oldest information is deleted to maintain the number of records. The rows of the table go up one by one every time new information is added.
 <br><br>
 
 ### 9. Remove all of earnings records
