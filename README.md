@@ -6,7 +6,7 @@
 * Using component: language-java, GUI-java.swing, database-SQLite
 * Purpose: for sales activities of persons(ex.students) who do not intend to profit.
 <br><br>
-## 🟢Functions
+## Functions
 ### Main screen
 <img width=600px src=https://user-images.githubusercontent.com/53461080/85945847-5c5df980-b97b-11ea-921e-d654634fed89.PNG><br>
 &nbsp;It shows information about menus, orders, on order, earnings and current time. It's completely empty now. Frame size is 956*659.
