@@ -1,31 +1,31 @@
-/* ¸Ş´º Å¬·¡½º */
+/* ë©”ë‰´ í´ë˜ìŠ¤ */
 class Menu{
 
-		/*¸Ş´º ÀÌ¸§*/ private String menuName;
-		/*¸Ş´º °¡°İ*/ private int menuPrice;
+		/*ë©”ë‰´ ì´ë¦„*/ private String menuName;
+		/*ë©”ë‰´ ê°€ê²©*/ private int menuPrice;
 		
-		/*ÃÊ±â »ı¼ºÀÚ*/
+		/*ì´ˆê¸° ìƒì„±ì*/
 		public Menu() {
 			this.menuName = null;
 			this.menuPrice = 0;
 		}
 		
-		/*»ç¿ëÀÚ¿¡ ÀÇÇÑ ¼öÁ¤*/
+		/*ì‚¬ìš©ìì— ì˜í•œ ìˆ˜ì •*/
 		public void reMenu(String name, int price){
 			this.menuName = name;
 			this.menuPrice = price;
 		}
 		
-		/*¸Ş´º ÀÌ¸§ ¼öÁ¤ setter method*/
+		/*ë©”ë‰´ ì´ë¦„ ìˆ˜ì • setter method*/
 		public void setMenuName(String name) {
 			this.menuName = name;
 		}
-		/*¸Ş´º °¡°İ ¼öÁ¤ setter method*/
+		/*ë©”ë‰´ ê°€ê²© ìˆ˜ì • setter method*/
 		public void setMenuPrice(int price) {
 			this.menuPrice = price;
 		}
 		
-		/*¸Ş´º ÀÌ¸§ getter*/
+		/*ë©”ë‰´ ì´ë¦„ getter*/
 		public String getMenuName() {
 			if(menuName!=null) {
 				return this.menuName;	
@@ -33,12 +33,12 @@ class Menu{
 				return "";
 			}
 		}
-		/*¸Ş´º °¡°İ getter*/
+		/*ë©”ë‰´ ê°€ê²© getter*/
 		public int getMenuPrice() {
 			return this.menuPrice;
 		}
 		
-		/*¸Ş´º »èÁ¦ method*/
+		/*ë©”ë‰´ ì‚­ì œ method*/
 		public void deleteMenu() {
 			this.menuName = null;
 			this.menuPrice = 0;

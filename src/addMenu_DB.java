@@ -16,14 +16,14 @@ public class addMenu_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
-			//¸Ş´º ³Ö±â
+			//ë©”ë‰´ ë„£ê¸°
 			int id=Integer.parseInt(j1);
 			int price = Integer.parseInt(j3); 
 			int i = 0;
@@ -84,4 +84,3 @@ public class addMenu_DB {
 		
 	
 }
-

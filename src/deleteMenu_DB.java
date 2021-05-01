@@ -10,14 +10,14 @@ public class deleteMenu_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
-			//¸Ş´º ºÒ·¯¿À±â
+			//ë©”ë‰´ ë¶ˆëŸ¬ì˜¤ê¸°
 			int i=Integer.parseInt(si);
 			String SQL = "delete from menu where menu_id="+i+";";
 			stmt.executeUpdate(SQL);
@@ -73,4 +73,3 @@ public class deleteMenu_DB {
 		//SortDB sort = new SortDB();
 	}
 }
-

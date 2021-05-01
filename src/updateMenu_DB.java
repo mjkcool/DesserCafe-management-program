@@ -11,14 +11,14 @@ public class updateMenu_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
-			//¸Ş´º ºÒ·¯¿À±â
+			//ë©”ë‰´ ë¶ˆëŸ¬ì˜¤ê¸°
 			int price=Integer.parseInt(sprice);
 			int id = Integer.parseInt(sid);
 			String SQL = "update menu set menu_name='"+sname+"', price="+price+" where menu_id="+id+";";

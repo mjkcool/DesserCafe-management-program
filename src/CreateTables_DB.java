@@ -9,14 +9,14 @@ public class CreateTables_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
-			//µ¥ÀÌÅÍ Çü DB¿¡ ¸Â°Ô º¯°æ
+			//ë°ì´í„° í˜• DBì— ë§ê²Œ ë³€ê²½
 			
 			String SQL = "CREATE TABLE IF NOT EXISTS lastrecord(lr_id INTEGER(11) NOT NULL PRIMARY key, recordeddate varchar(100) NOT NULL, income int(11) NOT NULL, ordernum int(11) NOT NULL)";
 			stmt.executeUpdate(SQL);

@@ -11,12 +11,12 @@ public class arrayLastRecords_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLï¿½ï¿½ï¿½ï¿½
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ï¿½ï¿½ï¿½ï¿½
 			stmt = conn.createStatement();
 			
 			String SQL4 = "delete from lastrecord where lr_id = 0;";

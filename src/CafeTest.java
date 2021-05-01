@@ -39,7 +39,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-/* ¸ŞÀÎ Å¬·¡½º */
+/* ë©”ì¸ í´ë˜ìŠ¤ */
 public class CafeTest {
 
 	/*SWING*/
@@ -52,82 +52,82 @@ public class CafeTest {
 	
 	static int i, j;
 	
-	/* ¸Ş´º ÀÎ½ºÅÏ½º °³¼ö ÇÑµµ »ó¼ö(Àı´ë °íÁ¤!!) */ private final static int menuLength = 12;
-	/*[DB]Menu ÀÎ½ºÅÏ½º ¹è¿­ »ı¼º*/static Menu menu[] = new Menu[menuLength];
+	/* ë©”ë‰´ ì¸ìŠ¤í„´ìŠ¤ ê°œìˆ˜ í•œë„ ìƒìˆ˜(ì ˆëŒ€ ê³ ì •!!) */ private final static int menuLength = 12;
+	/*[DB]Menu ì¸ìŠ¤í„´ìŠ¤ ë°°ì—´ ìƒì„±*/static Menu menu[] = new Menu[menuLength];
 	
 	
-	/* ÁÖ¹®Á¤º¸ ÀÎ½ºÅÏ½º °³¼ö ÇÑµµ */ private static int orderLength = 10;
-	/*Order ÀÎ½ºÅÏ½º ¹è¿­ »ı¼º*/private static Order order[] = new Order[orderLength];
+	/* ì£¼ë¬¸ì •ë³´ ì¸ìŠ¤í„´ìŠ¤ ê°œìˆ˜ í•œë„ */ private static int orderLength = 10;
+	/*Order ì¸ìŠ¤í„´ìŠ¤ ë°°ì—´ ìƒì„±*/private static Order order[] = new Order[orderLength];
 	
 	
-	/*[DB]Áö³­ ÆÇ¸Å±â·Ï ÀÎ½ºÅÏ½º »ı¼º*/static LastRecords record[] = new LastRecords[LastRecords.recordsIndex];
+	/*[DB]ì§€ë‚œ íŒë§¤ê¸°ë¡ ì¸ìŠ¤í„´ìŠ¤ ìƒì„±*/static LastRecords record[] = new LastRecords[LastRecords.recordsIndex];
 	
 	
-	/*¸ŞÀÎÈ­¸é ÁÖ¹®¸Ş´º ÀÓ½Ã´©Àû µ¥ÀÌÅÍ°ø°£¡å*/private static String tempMenu[] = new String[Order.ordermenuLength];
-	/*¸ŞÀÎÈ­¸é ÁÖ¹®¼ö·® ÀÓ½Ã´©Àû µ¥ÀÌÅÍ°ø°£¡ß*/private static int tempQuantity[] = new int[Order.ordermenuLength];
-	/*¸ŞÀÎÈ­¸é ÁÖ¹®±İ¾× ÀÓ½Ã´©Àû µ¥ÀÌÅÍ°ø°£¡ã*/private static int tempPayprice;
+	/*ë©”ì¸í™”ë©´ ì£¼ë¬¸ë©”ë‰´ ì„ì‹œëˆ„ì  ë°ì´í„°ê³µê°„â–¼*/private static String tempMenu[] = new String[Order.ordermenuLength];
+	/*ë©”ì¸í™”ë©´ ì£¼ë¬¸ìˆ˜ëŸ‰ ì„ì‹œëˆ„ì  ë°ì´í„°ê³µê°„â—†*/private static int tempQuantity[] = new int[Order.ordermenuLength];
+	/*ë©”ì¸í™”ë©´ ì£¼ë¬¸ê¸ˆì•¡ ì„ì‹œëˆ„ì  ë°ì´í„°ê³µê°„â–²*/private static int tempPayprice;
 	
 	
-	/*´©Àû ÆÇ¸Å¼öÀÔ·®*/ private int nowEarnings;
-	/*´©Àû ÆÇ¸ÅÁÖ¹®·®*/ private int nowPays = 0;
+	/*ëˆ„ì  íŒë§¤ìˆ˜ì…ëŸ‰*/ private int nowEarnings;
+	/*ëˆ„ì  íŒë§¤ì£¼ë¬¸ëŸ‰*/ private int nowPays = 0;
 	
 	
-	/* ¡ÚTable ¸ŞÀÎÈ­¸é ÁÖ¹®Á¤º¸¸ñ·Ï ¿­ ÀÌ¸§ */ private static String heading[] = new String[] {"¹øÈ£","ÁÖ¹® ¸Ş´º","°áÁ¦ ±İ¾×"};
-	/* ¡ÚTable ¸ŞÀÎÈ­¸é ÁÖ¹®Á¤º¸¸ñ·Ï °ª */ private static Object[][] orderData = new Object[orderLength][3];
-	/* ¡ÚTable ¸ŞÀÎÈ­¸é ÁÖ¹®Á¤º¸¸ñ·Ï Á¤ÀÇ */private static JTable table =  new JTable(orderData, heading);
+	/* â˜…Table ë©”ì¸í™”ë©´ ì£¼ë¬¸ì •ë³´ëª©ë¡ ì—´ ì´ë¦„ */ private static String heading[] = new String[] {"ë²ˆí˜¸","ì£¼ë¬¸ ë©”ë‰´","ê²°ì œ ê¸ˆì•¡"};
+	/* â˜…Table ë©”ì¸í™”ë©´ ì£¼ë¬¸ì •ë³´ëª©ë¡ ê°’ */ private static Object[][] orderData = new Object[orderLength][3];
+	/* â˜…Table ë©”ì¸í™”ë©´ ì£¼ë¬¸ì •ë³´ëª©ë¡ ì •ì˜ */private static JTable table =  new JTable(orderData, heading);
  
 	
-	/* ¡ÚTable Áö³­ ÆÇ¸Å±â·Ï ¿­ ÀÌ¸§ */ private static String heading_last[] = new String[] {"³¯Â¥","ÆÇ¸Å¼öÀÔ","ÆÇ¸ÅÁÖ¹®¼ö"};
-	/* ¡ÚTable Áö³­ ÆÇ¸Å±â·Ï °ª */ private static Object[][] orderData_last = new Object[LastRecords.recordsIndex][3];
-	/* ¡ÚTable Áö³­ ÆÇ¸Å±â·Ï Á¤ÀÇ */private JTable table_last = new JTable(orderData_last, heading_last);
+	/* â˜…Table ì§€ë‚œ íŒë§¤ê¸°ë¡ ì—´ ì´ë¦„ */ private static String heading_last[] = new String[] {"ë‚ ì§œ","íŒë§¤ìˆ˜ì…","íŒë§¤ì£¼ë¬¸ìˆ˜"};
+	/* â˜…Table ì§€ë‚œ íŒë§¤ê¸°ë¡ ê°’ */ private static Object[][] orderData_last = new Object[LastRecords.recordsIndex][3];
+	/* â˜…Table ì§€ë‚œ íŒë§¤ê¸°ë¡ ì •ì˜ */private JTable table_last = new JTable(orderData_last, heading_last);
 	
-	/* ¡ÚTable ¸Ş´º¸ñ·Ï ÀÌ¸§ */ private static String heading_menu[] = new String[] {"¸Ş´º ÀÌ¸§","°¡°İ"};
-	/* ¡ÚTable ¸Ş´º¸ñ·Ï °ª */ private  static Object[][] menuData = new Object[menuLength][2];
-	/* ¡ÚTable ¸Ş´º¸ñ·Ï Á¤ÀÇ */private static JTable table_menu = new JTable(menuData, heading_menu);
-	/* Table ¸Ş´º¸ñ·Ï Á¤ÀÇ 2 */private static JTable table_menu2 = new JTable(menuData, heading_menu);
+	/* â˜…Table ë©”ë‰´ëª©ë¡ ì´ë¦„ */ private static String heading_menu[] = new String[] {"ë©”ë‰´ ì´ë¦„","ê°€ê²©"};
+	/* â˜…Table ë©”ë‰´ëª©ë¡ ê°’ */ private  static Object[][] menuData = new Object[menuLength][2];
+	/* â˜…Table ë©”ë‰´ëª©ë¡ ì •ì˜ */private static JTable table_menu = new JTable(menuData, heading_menu);
+	/* Table ë©”ë‰´ëª©ë¡ ì •ì˜ 2 */private static JTable table_menu2 = new JTable(menuData, heading_menu);
 	
-	/* ¸Ş´º Ãß°¡ ÅØ½ºÆ® ÇÊµå */
+	/* ë©”ë‰´ ì¶”ê°€ í…ìŠ¤íŠ¸ í•„ë“œ */
 	private JTextField str_newMenuName;
 	private JTextField int_newMenuPrice;
 	
-	/*½Ã°£ Çü½Ä*/SimpleDateFormat format1 = new SimpleDateFormat("M/dd a hh:mm:ss",new Locale("en", "US"));
+	
 	SimpleDateFormat format2 = new SimpleDateFormat("Y-M-dd (H:mm)");
 	
-	/*ÆĞ³Î*/
+	/*íŒ¨ë„*/
 	JPanel topBar = new JPanel();
 	JPanel bottomMain = new JPanel();
 	JPanel deleteMenuBar = new JPanel();
 	JPanel lastEarningsBar = new JPanel();
 	JPanel setIntoPanel = new JPanel();
 	JPanel square = new JPanel();
-	/*¼öÁ¤ÇÒ ¸Ş´ºÀÇ ¹øÈ£ ÀúÀå*/int numtemp;
+	/*ìˆ˜ì •í•  ë©”ë‰´ì˜ ë²ˆí˜¸ ì €ì¥*/int numtemp;
 
-	/*¸Ş´º ¼öÁ¤Ã¢ÀÇ ¸Ş´ºÀÌ¸§ ÅØ½ºÆ® ÇÊµå*/private JTextField reMenuNameField;
-	/*¸Ş´º ¼öÁ¤Ã¢ÀÇ °¡°İ ÅØ½ºÆ® ÇÊµå*/private JTextField reMenuPriceField;
+	/*ë©”ë‰´ ìˆ˜ì •ì°½ì˜ ë©”ë‰´ì´ë¦„ í…ìŠ¤íŠ¸ í•„ë“œ*/private JTextField reMenuNameField;
+	/*ë©”ë‰´ ìˆ˜ì •ì°½ì˜ ê°€ê²© í…ìŠ¤íŠ¸ í•„ë“œ*/private JTextField reMenuPriceField;
 	
-	/* ¸ŞÀÎÈ­¸é ¸Ş´º ¹öÆ° Á¤ÀÇ */
+	/* ë©”ì¸í™”ë©´ ë©”ë‰´ ë²„íŠ¼ ì •ì˜ */
 	static JButton MenuBtn[] = new JButton[12];
 	
 	
-	/* ¸ŞÀÎÈ­¸é¿¡ º¸¿©Áö´Â ¸Ş´º ¹öÆ° ÅØ½ºÆ® »õ·Î°íÄ§ */
+	/* ë©”ì¸í™”ë©´ì— ë³´ì—¬ì§€ëŠ” ë©”ë‰´ ë²„íŠ¼ í…ìŠ¤íŠ¸ ìƒˆë¡œê³ ì¹¨ */
 	public void resetingShowingMenu() {
 		for(i=0; i<menuLength; i++) {
-			MenuBtn[i].setText("<HTML><body><center>"+menu[i].getMenuName()+"<br>"+(menu[i].getMenuName().equals("")?"":menu[i].getMenuPrice()+"¿ø")+"</center></body></HTML>");
+			MenuBtn[i].setText("<HTML><body><center>"+menu[i].getMenuName()+"<br>"+(menu[i].getMenuName().equals("")?"":menu[i].getMenuPrice()+"ì›")+"</center></body></HTML>");
 		}
 			
 	}//end of method
 	
 	
-	/*setMenuBar¿Í deleteMenuBar¿¡¼­ »ç¿ëµÇ´Â ¸Ş´º TableÀÇ µ¥ÀÌÅÍ »õ·Î°íÄ§*/
+	/*setMenuBarì™€ deleteMenuBarì—ì„œ ì‚¬ìš©ë˜ëŠ” ë©”ë‰´ Tableì˜ ë°ì´í„° ìƒˆë¡œê³ ì¹¨*/
 	public void resetingMenuTable() {
 		for(i=0; i<menuLength; i++) {
 			menuData[i][0] = menu[i].getMenuName();
-			menuData[i][1] = menu[i].getMenuName().equals("")?"":menu[i].getMenuPrice()+"¿ø";
+			menuData[i][1] = menu[i].getMenuName().equals("")?"":menu[i].getMenuPrice()+"ì›";
 		}
 	}//end of method
 	
 	
-	/*¸Ş´º¸ñ·Ï º¯°æ ÈÄ »óÅÂ »õ·Î°íÄ§(ÆĞ³Î off/on µ¿ÀÛ)*/
+	/*ë©”ë‰´ëª©ë¡ ë³€ê²½ í›„ ìƒíƒœ ìƒˆë¡œê³ ì¹¨(íŒ¨ë„ off/on ë™ì‘)*/
 	public void resetoutMenuTable() {
 		deleteMenuBar.setVisible(false);
 		deleteMenuBar.setVisible(true);
@@ -135,9 +135,9 @@ public class CafeTest {
 	}//end of method
 	
 	
-	/*bottomMain¼Ó ÁÖ¹® Á¤º¸ table °ª »õ·Î°íÄ§*/
+	/*bottomMainì† ì£¼ë¬¸ ì •ë³´ table ê°’ ìƒˆë¡œê³ ì¹¨*/
 	public void resetOrderInfoTable() {
-		/*ÁÖ¹® Á¤º¸ °´Ã¼¹è¿­ Á¤·Ä*/
+		/*ì£¼ë¬¸ ì •ë³´ ê°ì²´ë°°ì—´ ì •ë ¬*/
 		Order tmp;
 		for(i=0; i<orderLength; i++) {
 			for(int j=i+1; j<orderLength ;j++) {
@@ -148,45 +148,45 @@ public class CafeTest {
 				}
 			}
 		}
-		/*»èÁ¦µÈ »çÇ×¿¡ ´ëÇÏ¿© Ãâ·Â »õ·Î °íÄ§*/
+		/*ì‚­ì œëœ ì‚¬í•­ì— ëŒ€í•˜ì—¬ ì¶œë ¥ ìƒˆë¡œ ê³ ì¹¨*/
 		for(i=0; i<orderLength; i++) {
 			
 			String messg = "";
-			//if ÁÖ¹®ÇÑ ¸Ş´º°¡ ¾øÀ»¶§
+			//if ì£¼ë¬¸í•œ ë©”ë‰´ê°€ ì—†ì„ë•Œ
 			if(order[i].isFilled()==false) {
 				messg="";
-			}else if(order[i].getOrderName(1).equals("")) { //¸Ş´º¸¦ ÇÑÁ¾·ù¸¸ ÁÖ¹®ÇßÀ»¶§
+			}else if(order[i].getOrderName(1).equals("")) { //ë©”ë‰´ë¥¼ í•œì¢…ë¥˜ë§Œ ì£¼ë¬¸í–ˆì„ë•Œ
 				messg =order[i].getOrderName(0)+"("+order[i].getOrderQuantity(0)+")";
 		
-			}else if(order[i].getOrderName(1).equals("")==false){ //¸Ş´º¸¦ µÎÁ¾·ù ÁÖ¹®ÇßÀ»¶§
+			}else if(order[i].getOrderName(1).equals("")==false){ //ë©”ë‰´ë¥¼ ë‘ì¢…ë¥˜ ì£¼ë¬¸í–ˆì„ë•Œ
 				messg =order[i].getOrderName(0)+"("+order[i].getOrderQuantity(0)+"), "+order[i].getOrderName(1)+"("+order[i].getOrderQuantity(1)+")";
 				
 			}
 			orderData[i][0] = (order[i].getOrdernum()==0)?"":(order[i].getOrdernum());
 			orderData[i][1] = messg;
-			orderData[i][2] = (order[i].getFinalPrice()==0)?"":order[i].getFinalPrice()+"¿ø";
+			orderData[i][2] = (order[i].getFinalPrice()==0)?"":order[i].getFinalPrice()+"ì›";
 		}
 	}//end of method
 	
 	
-	/*¸Ş´º Á¤º¸ Ãß°¡ ¸Ş¼­µå*/
+	/*ë©”ë‰´ ì •ë³´ ì¶”ê°€ ë©”ì„œë“œ*/
 	public static int id;
 	public void addMenu(String name, int price) {
 		
-		JLabel label = new JLabel("»õ ¸Ş´º ["+name+" "+price+"¿ø] µî·Ï ¿Ï·á");
-		label.setFont(new Font("±¼¸²", Font.BOLD, 17));
+		JLabel label = new JLabel("ìƒˆ ë©”ë‰´ ["+name+" "+price+"ì›] ë“±ë¡ ì™„ë£Œ");
+		label.setFont(new Font("êµ´ë¦¼", Font.BOLD, 17));
 		label.setForeground(Color.MAGENTA);
 		
-		JLabel label03 = new JLabel("¸Ş´º °³¼ö ÇÑµµ ÃÊ°úÀÔ´Ï´Ù.");
-		label03.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		JLabel label03 = new JLabel("ë©”ë‰´ ê°œìˆ˜ í•œë„ ì´ˆê³¼ì…ë‹ˆë‹¤.");
+		label03.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		
 		i=0;
 		int flag=0;
-		/*¹è¿­ÀÇ ¸¶Áö¸·°ªÀÌ Â÷ÀÖ´ÂÁö È®ÀÎÇÏ¿© ¹è¿­ÀÌ ²Ë Ã¡´ÂÁö È®ÀÎÇÑ´Ù.*/
-		if((menu[menuLength-1].getMenuName()).equals("")) { //´Ù Â÷ÀÖÁö¾ÊÀ¸¸é i¸¦ µ¹·Á ºó ÀÚ¸®¸¦ Ã£´Â´Ù
-			while(flag==0) { //¸Ş´º °´Ã¼ ¹è¿­¿¡¼­ °¡Àå ¾Õ ºó °ø°£À» Ã£´Â´Ù.
+		/*ë°°ì—´ì˜ ë§ˆì§€ë§‰ê°’ì´ ì°¨ìˆëŠ”ì§€ í™•ì¸í•˜ì—¬ ë°°ì—´ì´ ê½‰ ì°¼ëŠ”ì§€ í™•ì¸í•œë‹¤.*/
+		if((menu[menuLength-1].getMenuName()).equals("")) { //ë‹¤ ì°¨ìˆì§€ì•Šìœ¼ë©´ ië¥¼ ëŒë ¤ ë¹ˆ ìë¦¬ë¥¼ ì°¾ëŠ”ë‹¤
+			while(flag==0) { //ë©”ë‰´ ê°ì²´ ë°°ì—´ì—ì„œ ê°€ì¥ ì• ë¹ˆ ê³µê°„ì„ ì°¾ëŠ”ë‹¤.
 				if((menu[i].getMenuName()).equals("")) {
-					/* ¸Ş´º µî·Ï(Ãß°¡) *///menu[i].reMenu(name, price);
+					/* ë©”ë‰´ ë“±ë¡(ì¶”ê°€) *///menu[i].reMenu(name, price);
 					
 					/* DB */
 					String sprice=Integer.toString(price);
@@ -196,34 +196,34 @@ public class CafeTest {
 					
 					
 					flag=1; 
-				}else {	i++ ;} //i°ª ÀÎµ¦½º°¡ ºñ¾îÀÖÁö ¾ÊÀ¸¸é i°ªÀ» Áõ°¡ÇÏ°í ´Ù½Ã while¹®À» µ¹¸°´Ù.
+				}else {	i++ ;} //iê°’ ì¸ë±ìŠ¤ê°€ ë¹„ì–´ìˆì§€ ì•Šìœ¼ë©´ iê°’ì„ ì¦ê°€í•˜ê³  ë‹¤ì‹œ whileë¬¸ì„ ëŒë¦°ë‹¤.
 			}
-			JOptionPane.showMessageDialog(null, label); //µî·Ï¿Ï·á ¸Ş½ÃÁö
+			JOptionPane.showMessageDialog(null, label); //ë“±ë¡ì™„ë£Œ ë©”ì‹œì§€
 		}else {
-			JOptionPane.showMessageDialog(null, label03,"µî·Ï ½ÇÆĞ",JOptionPane.OK_OPTION); //µî·Ï ½ÇÆĞ ¸Ş½ÃÁö
+			JOptionPane.showMessageDialog(null, label03,"ë“±ë¡ ì‹¤íŒ¨",JOptionPane.OK_OPTION); //ë“±ë¡ ì‹¤íŒ¨ ë©”ì‹œì§€
 		}
 	}//end of method
 
 	
-	/*¸Ş´º °´Ã¼¹è¿­ Á¤·Ä*/
+	/*ë©”ë‰´ ê°ì²´ë°°ì—´ ì •ë ¬*/
 	public void reArraymanuTable() {
-		resetingMenuTable(); //Á¤·Ä Àü ¸Ş´ºtable¿¡ Ç¥½ÃÇÒ °ª »õ·Î°íÄ§
+		resetingMenuTable(); //ì •ë ¬ ì „ ë©”ë‰´tableì— í‘œì‹œí•  ê°’ ìƒˆë¡œê³ ì¹¨
 		Menu temp;
 		for(i=0; i<menuLength-1; i++) {
-			if(menu[i].getMenuName().equals("") && menu[i+1].getMenuName().equals("")==false) { //¹Ù·Î ¾ÕÀÇ ÀÎµ¦½º°¡ ºñ°í µÚ¿£ Â÷ÀÖÀ¸¸é
+			if(menu[i].getMenuName().equals("") && menu[i+1].getMenuName().equals("")==false) { //ë°”ë¡œ ì•ì˜ ì¸ë±ìŠ¤ê°€ ë¹„ê³  ë’¤ì—” ì°¨ìˆìœ¼ë©´
 					temp = menu[i];
 					menu[i] = menu[i+1];
 					menu[i+1]=temp;
 			}
 		}
 		
-		resetingMenuTable(); //Á¤·Ä ÈÄ ¸Ş´ºtable¿¡ Ç¥½ÃÇÒ °ª »õ·Î°íÄ§
+		resetingMenuTable(); //ì •ë ¬ í›„ ë©”ë‰´tableì— í‘œì‹œí•  ê°’ ìƒˆë¡œê³ ì¹¨
 		deleteMenuBar.setVisible(false);
 		deleteMenuBar.setVisible(true);
 	}//end of method
 	
 	
-	/*¸Ş´º ¼±ÅÃ¶õ »õ·Î°íÄ§ ¸Ş¼­µå*/
+	/*ë©”ë‰´ ì„ íƒë€ ìƒˆë¡œê³ ì¹¨ ë©”ì„œë“œ*/
 	public void deletetempMenuSet() {
 		for(i=0; i< Order.ordermenuLength; i++) {
 			tempMenu[i] = "";
@@ -235,79 +235,79 @@ public class CafeTest {
 	}//end of method
 
 	
-	/*ÇöÀç ÁÖ¹®¸Ş´º ¼±ÅÃ °úÁ¤¿¡¼­ ÇØ´ç ¸Ş´º°¡ ¼±ÅÃ µÈ ¿©ºÎ*/private boolean flagpick;
+	/*í˜„ì¬ ì£¼ë¬¸ë©”ë‰´ ì„ íƒ ê³¼ì •ì—ì„œ í•´ë‹¹ ë©”ë‰´ê°€ ì„ íƒ ëœ ì—¬ë¶€*/private boolean flagpick;
 	
-	/*¸Ş´º¸¦ ¼±ÅÃÇßÀ»¶§ ½ÇÇàµÇ´Â ¸ŞÀÎÈ­¸é¿¡¼­ ¸Ş´º ¼±ÅÃ°úÁ¤ ¸Ş¼­µå*/
-	public void pickMenu(int numOfmenu) { //¼±ÅÃÇÑ ¸Ş´ºÀÇ ÀÎµ¦½º ¹øÈ£¸¦ ¸Å°³º¯¼ö·Î °¡Á®¿È
+	/*ë©”ë‰´ë¥¼ ì„ íƒí–ˆì„ë•Œ ì‹¤í–‰ë˜ëŠ” ë©”ì¸í™”ë©´ì—ì„œ ë©”ë‰´ ì„ íƒê³¼ì • ë©”ì„œë“œ*/
+	public void pickMenu(int numOfmenu) { //ì„ íƒí•œ ë©”ë‰´ì˜ ì¸ë±ìŠ¤ ë²ˆí˜¸ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì ¸ì˜´
 		flagpick=false;
-		/* ÀÌ¹Ì ¼±ÅÃµÈ ¸Ş´ºÀÎÁö ÆÇ´Ü */
+		/* ì´ë¯¸ ì„ íƒëœ ë©”ë‰´ì¸ì§€ íŒë‹¨ */
 		for(i=0; i<Order.ordermenuLength; i++) { 
-			if(tempMenu[i].equals(menu[numOfmenu].getMenuName())){ //³»°¡ Áö±İ ¼±ÅÃÇÑ ¸Ş´º°¡ Ã¹¹øÂ°¿¡ ¼±ÅÃÇß´ø ¸Ş´º¿Í °°À¸¸é ÀÌ¹Ì ¼±ÅÃÇß´ø ¸Ş´ºÀÌ¹Ç·Î
-				tempQuantity[i]++; //±× ¸Ş´º ¼ö·®¸¸ ³ôÀÌÀÚ!
-				tempPayprice += menu[numOfmenu].getMenuPrice(); //°¡°İµµ ´©ÀûÇØ!
+			if(tempMenu[i].equals(menu[numOfmenu].getMenuName())){ //ë‚´ê°€ ì§€ê¸ˆ ì„ íƒí•œ ë©”ë‰´ê°€ ì²«ë²ˆì§¸ì— ì„ íƒí–ˆë˜ ë©”ë‰´ì™€ ê°™ìœ¼ë©´ ì´ë¯¸ ì„ íƒí–ˆë˜ ë©”ë‰´ì´ë¯€ë¡œ
+				tempQuantity[i]++; //ê·¸ ë©”ë‰´ ìˆ˜ëŸ‰ë§Œ ë†’ì´ì!
+				tempPayprice += menu[numOfmenu].getMenuPrice(); //ê°€ê²©ë„ ëˆ„ì í•´!
 				flagpick = true;
 				break;
 			}
 		}
-		/* ÀÌ¹Ì ¼±ÅÃµÈ ¸Ş´º°¡ ¾Æ´Ï°í ¸Ş´º°¡ ²Ë Â÷Áö ¾Ê¾Ò´Ù¸é */
+		/* ì´ë¯¸ ì„ íƒëœ ë©”ë‰´ê°€ ì•„ë‹ˆê³  ë©”ë‰´ê°€ ê½‰ ì°¨ì§€ ì•Šì•˜ë‹¤ë©´ */
 		if(flagpick==false && tempMenu[Order.ordermenuLength-1].equals("")) {
 			for(i=0; i<Order.ordermenuLength; i++) { 
-				if(tempMenu[i].equals("")) { //if ÁÖ¹®ÁßÀÎ ¸Ş´º ¸ñ·ÏÁß Ã³À½ ºó°÷¿¡ ÀÓ½ÃÀúÀå
+				if(tempMenu[i].equals("")) { //if ì£¼ë¬¸ì¤‘ì¸ ë©”ë‰´ ëª©ë¡ì¤‘ ì²˜ìŒ ë¹ˆê³³ì— ì„ì‹œì €ì¥
 					tempMenu[i] = menu[numOfmenu].getMenuName();
 					tempQuantity[i]++;
 					tempPayprice += menu[numOfmenu].getMenuPrice();
 					break;
 				}
 			}
-		/* ÀÌ¹Ì ¼±ÅÃµÈ ¸Ş´º°¡ ¾Æ´Ï°í ¸Ş´º°¡ ²Ë Ã¡´Ù¸é */
+		/* ì´ë¯¸ ì„ íƒëœ ë©”ë‰´ê°€ ì•„ë‹ˆê³  ë©”ë‰´ê°€ ê½‰ ì°¼ë‹¤ë©´ */
 		}else if(flagpick==false && tempMenu[Order.ordermenuLength-1].equals("")==false){
-			JOptionPane.showMessageDialog(null, "ÁÖ¹® °¡´ÉÇÑ ¸Ş´ºÀÇ Á¾·ù´Â "+Order.ordermenuLength+"°³±îÁö ÀÔ´Ï´Ù.","¸Ş´º ÃÊ°ú",JOptionPane.OK_OPTION);
+			JOptionPane.showMessageDialog(null, "ì£¼ë¬¸ ê°€ëŠ¥í•œ ë©”ë‰´ì˜ ì¢…ë¥˜ëŠ” "+Order.ordermenuLength+"ê°œê¹Œì§€ ì…ë‹ˆë‹¤.","ë©”ë‰´ ì´ˆê³¼",JOptionPane.OK_OPTION);
 		}
 		
-		/*½Ã°£ »õ·Î°íÄ§*/resetTime();
+		/*ì‹œê°„ ìƒˆë¡œê³ ì¹¨*/
 		resetTemporder();	
 	}
 	
-	/* ¸Ş´º »èÁ¦ ·ÎÁ÷ ¸Ş¼­µå */
+	/* ë©”ë‰´ ì‚­ì œ ë¡œì§ ë©”ì„œë“œ */
 	public void deleteMenuin(int n){
-		if(menu[n].getMenuName()=="") return; /*¸Ş´º°¡ ºñ¾îÀÖÀ¸¸é ¾Æ¹« µ¿ÀÛµµ ÇÏÁö ¾Ê´Â´Ù.*/
+		if(menu[n].getMenuName()=="") return; /*ë©”ë‰´ê°€ ë¹„ì–´ìˆìœ¼ë©´ ì•„ë¬´ ë™ì‘ë„ í•˜ì§€ ì•ŠëŠ”ë‹¤.*/
 		
-		JLabel label103 = new JLabel("["+menu[n].getMenuName()+"] ¸Ş´º°¡ »èÁ¦µÇ¾ú½À´Ï´Ù.");
-		label103.setFont(new Font("±¼¸²", Font.BOLD, 17));
+		JLabel label103 = new JLabel("["+menu[n].getMenuName()+"] ë©”ë‰´ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+		label103.setFont(new Font("êµ´ë¦¼", Font.BOLD, 17));
 		label103.setForeground(Color.MAGENTA);
 		
 		JOptionPane.showMessageDialog(null, label103, "", JOptionPane.INFORMATION_MESSAGE);
-		/*¸Ş´º »èÁ¦*/menu[n].deleteMenu();
+		/*ë©”ë‰´ ì‚­ì œ*/menu[n].deleteMenu();
 		
 		/* DB */
 		deleteMenu_DB deleteMenu_DB = new deleteMenu_DB(Integer.toString(n));
 		
-		/*Àû¿ë */resetingMenuTable();
-		/*Á¤·Ä */reArraymanuTable();
-		/*Ç¥½Ã */resetoutMenuTable();
+		/*ì ìš© */resetingMenuTable();
+		/*ì •ë ¬ */reArraymanuTable();
+		/*í‘œì‹œ */resetoutMenuTable();
 		
-		resetTime();
+		
 	}
 	
 	
-	/*ÁÖ¹®°áÁ¦ mothod*/
+	/*ì£¼ë¬¸ê²°ì œ mothod*/
 	public void payOrder() {
-		/* ¸Ç ¸¶Áö¸· ÁÖºØÁ¤º¸°¡ ²Ë Â÷ ÀÖÀ¸¸é */
+		/* ë§¨ ë§ˆì§€ë§‰ ì£¼ë¶•ì •ë³´ê°€ ê½‰ ì°¨ ìˆìœ¼ë©´ */
 		if(order[orderLength-1].isFilled()==true) {
-			JOptionPane.showMessageDialog(null, "ÁÖ¹® Á¤º¸°¡ ²Ë Ã¡½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(null, "ì£¼ë¬¸ ì •ë³´ê°€ ê½‰ ì°¼ìŠµë‹ˆë‹¤.");
 			return;
 		}
 		
 		int flag=0;
 		int tmpODRnum = 0;
-		for(int j=1; j<=orderLength; j++) { //Ã£¾Æ¾ß ÇÏ´Â ¼ö.
-			for(int k=0; k<orderLength; k++) { //ºñ±³ÇÒ ÀÎµ¦½º ¹øÈ£ µ¹µ¹¸»¾Æ
+		for(int j=1; j<=orderLength; j++) { //ì°¾ì•„ì•¼ í•˜ëŠ” ìˆ˜.
+			for(int k=0; k<orderLength; k++) { //ë¹„êµí•  ì¸ë±ìŠ¤ ë²ˆí˜¸ ëŒëŒë§ì•„
 				if(j==order[k].getOrdernum()) {
 					flag=0;
 					break;
-				}else { flag=1;} //°ãÄ¡´Â ¼ö°¡ ¾ø´Ù¸é ÀÌ for¹®ÀÌ ³¡³ª¸é flag°¡ 1ÀÌ°ÚÁÒ?
+				}else { flag=1;} //ê²¹ì¹˜ëŠ” ìˆ˜ê°€ ì—†ë‹¤ë©´ ì´ forë¬¸ì´ ëë‚˜ë©´ flagê°€ 1ì´ê² ì£ ?
 			}
-			if(flag==1) { //°ãÄ¡´Â ¼ö°¡ ¾ø´Ù¸é ÀÌ ¼ö¸¦ Ã¤ÅÃÇÏ°í for¹®À» ºüÁ®³ª°¡ÀÚ
+			if(flag==1) { //ê²¹ì¹˜ëŠ” ìˆ˜ê°€ ì—†ë‹¤ë©´ ì´ ìˆ˜ë¥¼ ì±„íƒí•˜ê³  forë¬¸ì„ ë¹ ì ¸ë‚˜ê°€ì
 				tmpODRnum = j;
 				break;
 			}
@@ -315,49 +315,49 @@ public class CafeTest {
 		
 		
 		for(i=0; i<orderLength; i++) {
-			/*»õ ÁÖ¹®Á¤º¸¸¦ ÀúÀåÇÒ '°¡Àå ¾ÕÂÊÀÇ ºó ÁÖ¹®Á¤º¸ ÀÚ¸®'¸¦ Ã£´Â´Ù.*/
+			/*ìƒˆ ì£¼ë¬¸ì •ë³´ë¥¼ ì €ì¥í•  'ê°€ì¥ ì•ìª½ì˜ ë¹ˆ ì£¼ë¬¸ì •ë³´ ìë¦¬'ë¥¼ ì°¾ëŠ”ë‹¤.*/
 			if(order[i].isFilled() == false) {
-				/*ÁÖ¹®Á¤º¸ Ãß°¡*/order[i].reOrder(tempMenu, tempQuantity, tempPayprice, tmpODRnum);
+				/*ì£¼ë¬¸ì •ë³´ ì¶”ê°€*/order[i].reOrder(tempMenu, tempQuantity, tempPayprice, tmpODRnum);
 				
-				/*°áÁ¦±İ¾×À» ÆÇ¸Å¼öÀÔ·®¿¡ ´©Àû*/ nowEarnings += tempPayprice;
-				/*ÆÇ¸ÅÁÖ¹®·® Áõ°¡*/nowPays++;
+				/*ê²°ì œê¸ˆì•¡ì„ íŒë§¤ìˆ˜ì…ëŸ‰ì— ëˆ„ì */ nowEarnings += tempPayprice;
+				/*íŒë§¤ì£¼ë¬¸ëŸ‰ ì¦ê°€*/nowPays++;
 				
-				/* ¸Ş´º Á¤º¸ ÅØ½ºÆ® ¼¼ÆÃ */
+				/* ë©”ë‰´ ì •ë³´ í…ìŠ¤íŠ¸ ì„¸íŒ… */
 				String messg;
 				if(tempMenu[1].equals("")) {
 					messg =tempMenu[0]+"("+tempQuantity[0]+")";
 				}else {
 					messg =tempMenu[0]+"("+tempQuantity[0]+"), "+tempMenu[1]+"("+tempQuantity[1]+")";
 				}
-				/*°áÁ¦ ¿Ï·á ¸Ş½ÃÁö*/
-				JLabel paymentLabel = new JLabel("ÁÖ¹®¹øÈ£"+(tmpODRnum)+": "+messg);
-				paymentLabel.setFont(new Font("±¼¸²", Font.BOLD, 17));
+				/*ê²°ì œ ì™„ë£Œ ë©”ì‹œì§€*/
+				JLabel paymentLabel = new JLabel("ì£¼ë¬¸ë²ˆí˜¸"+(tmpODRnum)+": "+messg);
+				paymentLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 17));
 				paymentLabel.setForeground(Color.MAGENTA);
-				JOptionPane.showMessageDialog(null, paymentLabel,"°áÁ¦ ¿Ï·á",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, paymentLabel,"ê²°ì œ ì™„ë£Œ",JOptionPane.PLAIN_MESSAGE);
 				
 				orderData[i][0] = tmpODRnum;
 				orderData[i][1] = messg;
-				orderData[i][2] = tempPayprice+"¿ø";
+				orderData[i][2] = tempPayprice+"ì›";
 				
-				/*ÁÖ¹®Á¤º¸¸¦ Ãß°¡ÇÏ°í ¸ŞÀÎÈ­¸éÀ¸·Î µ¹¾Æ°£´Ù!*/
+				/*ì£¼ë¬¸ì •ë³´ë¥¼ ì¶”ê°€í•˜ê³  ë©”ì¸í™”ë©´ìœ¼ë¡œ ëŒì•„ê°„ë‹¤!*/
 				break;
 			}
 		}
 		
-		earnings.setText(Integer.toString(nowEarnings)+"¿ø");
-		amount.setText(Integer.toString(nowPays)+"°Ç");
+		earnings.setText(Integer.toString(nowEarnings)+"ì›");
+		amount.setText(Integer.toString(nowPays)+"ê±´");
 		
-		/*¸Ş´º ¼±ÅÃ Á¤º¸ »èÁ¦*/ deletetempMenuSet();
+		/*ë©”ë‰´ ì„ íƒ ì •ë³´ ì‚­ì œ*/ deletetempMenuSet();
 		topBar.setVisible(false);
 		bottomMain.setVisible(false);
 		topBar.setVisible(true);
 		bottomMain.setVisible(true);
 	}
 	
-	/*ÁÖ¹®Ãë¼Ò method*/
+	/*ì£¼ë¬¸ì·¨ì†Œ method*/
 	public void cancelOrder() {
-		/*½Ã°£ ¼Â*/resetTime();
-		/*¸Ş´º ¼±ÅÃ Á¤º¸ »èÁ¦*/deletetempMenuSet();
+		/*ì‹œê°„ ì…‹*/
+		/*ë©”ë‰´ ì„ íƒ ì •ë³´ ì‚­ì œ*/deletetempMenuSet();
 		topBar.setVisible(false);
 		bottomMain.setVisible(false);
 		topBar.setVisible(true);
@@ -366,7 +366,7 @@ public class CafeTest {
 	
 	
 	selectLastRecords_DB selectLastRecords_DB;
-	/* Áö³­ ±â·Ï ºÒ·¯¿Í¼­ table¿¡ ´ëÀÔ  */
+	/* ì§€ë‚œ ê¸°ë¡ ë¶ˆëŸ¬ì™€ì„œ tableì— ëŒ€ì…  */
 	public void selectRecord() {
 		for(i=0; i<LastRecords.recordsIndex; i++) {
 			selectLastRecords_DB = new selectLastRecords_DB(Integer.toString(i));
@@ -375,43 +375,43 @@ public class CafeTest {
 		lastEarningsBar.setVisible(true);
 	}
 	
-	/*Áö³­ ±â·Ï ¹è¿­ ´Ù »èÁ¦*/
+	/*ì§€ë‚œ ê¸°ë¡ ë°°ì—´ ë‹¤ ì‚­ì œ*/
 	public void resetRecord() {
 		for(i = 0; i<LastRecords.recordsIndex; i++) {
 			//record[i] = new LastRecords();
 			record[i].setRecord("", 0, 0);
 
 			orderData_last[i][0] = record[i].getDate();
-			orderData_last[i][1] = record[i].getDate().equals("")?"":record[i].getEarnings_record()+"¿ø";
-			orderData_last[i][2] = record[i].getDate().equals("")?"":record[i].getSales_record()+"°Ç";
+			orderData_last[i][1] = record[i].getDate().equals("")?"":record[i].getEarnings_record()+"ì›";
+			orderData_last[i][2] = record[i].getDate().equals("")?"":record[i].getSales_record()+"ê±´";
 		}
 		
 		
 	}
 	
 	
-	/*Áö³­ ±â·Ï table °ª »õ·Î°íÄ§ ¸Ş¼­µå*/
+	/*ì§€ë‚œ ê¸°ë¡ table ê°’ ìƒˆë¡œê³ ì¹¨ ë©”ì„œë“œ*/
 	public void showEarnings() {
 		selectRecord();
 		for(i=0; i<LastRecords.recordsIndex; i++) {
 			orderData_last[i][0] = record[i].getDate();
-			orderData_last[i][1] = record[i].getDate().equals("")?"":record[i].getEarnings_record()+"¿ø";
-			orderData_last[i][2] = record[i].getDate().equals("")?"":record[i].getSales_record()+"°Ç";
+			orderData_last[i][1] = record[i].getDate().equals("")?"":record[i].getEarnings_record()+"ì›";
+			orderData_last[i][2] = record[i].getDate().equals("")?"":record[i].getSales_record()+"ê±´";
 		}	
 	}
 	
 	
-	/*ÆÇ¸Å·® Áö³­ ±â·ÏÀ¸·Î ÀúÀå(ÃÊ±âÈ­) ¸Ş¼­µå*/
+	/*íŒë§¤ëŸ‰ ì§€ë‚œ ê¸°ë¡ìœ¼ë¡œ ì €ì¥(ì´ˆê¸°í™”) ë©”ì„œë“œ*/
 	public void resetEarnings() {
 		Date time = new Date();
 		String timeInfo = format2.format(time);
 		
-		if(record[LastRecords.recordsIndex-1].getDate() != "") { //ÀúÀåÇÒ ºó ÀÚ¸®°¡ ¾øÀ¸¸é
-			record[0] = new LastRecords();//Áö³­±â·Ï ¸Ç¾Õ²¨ »èÁ¦ÇÏ±â
-			//±×¸®°í ¾Æ·¡¿¡¼­ ÄÚµå¸¦ ¶¯°Ü¿Ã·ÁÁÖ´Â Á¤·Ä µ¿ÀÛÀ» ¼öÇàÇÔ. ÀÏ´Ü ÀúÀåÇÏ±â Àü¿¡ ÀÚ¸®ºÎÅÍ ¸¸µé°í º¸ÀÚ!
+		if(record[LastRecords.recordsIndex-1].getDate() != "") { //ì €ì¥í•  ë¹ˆ ìë¦¬ê°€ ì—†ìœ¼ë©´
+			record[0] = new LastRecords();//ì§€ë‚œê¸°ë¡ ë§¨ì•êº¼ ì‚­ì œí•˜ê¸°
+			//ê·¸ë¦¬ê³  ì•„ë˜ì—ì„œ ì½”ë“œë¥¼ ë•¡ê²¨ì˜¬ë ¤ì£¼ëŠ” ì •ë ¬ ë™ì‘ì„ ìˆ˜í–‰í•¨. ì¼ë‹¨ ì €ì¥í•˜ê¸° ì „ì— ìë¦¬ë¶€í„° ë§Œë“¤ê³  ë³´ì!
 			LastRecords temp;
 			for(i=0; i<LastRecords.recordsIndex-1; i++) {
-				if(record[i].getDate().equals("") && record[i+1].getDate().equals("")==false) { //¹Ù·Î ¾ÕÀÇ ÀÎµ¦½º°¡ ºñ°í µÚ¿£ Â÷ÀÖÀ¸¸é
+				if(record[i].getDate().equals("") && record[i+1].getDate().equals("")==false) { //ë°”ë¡œ ì•ì˜ ì¸ë±ìŠ¤ê°€ ë¹„ê³  ë’¤ì—” ì°¨ìˆìœ¼ë©´
 						temp = record[i];
 						record[i] = record[i+1];
 						record[i+1]=temp;						
@@ -423,29 +423,29 @@ public class CafeTest {
 		}//end of if
 		
 		addLastRecords_DB addLastRecords_DB ; 
-		//À§¿¡¼­ ÀÚ¸®¸¦ ºñ°Ô ¸¸µé¾úµç, ¿ø·¡ ºó ÀÚ¸®°¡ ÀÖ¾úµç ÀÌÁ¦ table¿¡¼­ °¡Àå ¾ÕÂÊÀÇ ºó ÀÎµ¦½º¸¦ Ã£¾Æ Áö³­ ±â·ÏÀ» ÀúÀåÇÑ´Ù.
+		//ìœ„ì—ì„œ ìë¦¬ë¥¼ ë¹„ê²Œ ë§Œë“¤ì—ˆë“ , ì›ë˜ ë¹ˆ ìë¦¬ê°€ ìˆì—ˆë“  ì´ì œ tableì—ì„œ ê°€ì¥ ì•ìª½ì˜ ë¹ˆ ì¸ë±ìŠ¤ë¥¼ ì°¾ì•„ ì§€ë‚œ ê¸°ë¡ì„ ì €ì¥í•œë‹¤.
 		for(i=0; i<LastRecords.recordsIndex; i++) {
 			if(record[i].getDate().equals("")) {
-				/*¡Ú¡Ú±â·Ï ÀúÀå¡Ú¡Ú*/record[i].setRecord(timeInfo, nowEarnings, nowPays);
-				/* Â÷·Ê´ë·Î ±â·Ï Á¤º¸ÀÇ Á¦¸ñ(³¯Â¥,ÀÚµ¿), ÇöÀç ¼öÀÔ, ÇöÀç ÁÖ¹®°Ç¼ö */
+				/*â˜…â˜…ê¸°ë¡ ì €ì¥â˜…â˜…*/record[i].setRecord(timeInfo, nowEarnings, nowPays);
+				/* ì°¨ë¡€ëŒ€ë¡œ ê¸°ë¡ ì •ë³´ì˜ ì œëª©(ë‚ ì§œ,ìë™), í˜„ì¬ ìˆ˜ì…, í˜„ì¬ ì£¼ë¬¸ê±´ìˆ˜ */
 				String sid = Integer.toString(i);
 				String snowEarnings = Integer.toString(nowEarnings);
 				String snowPays = Integer.toString(nowPays);
 				addLastRecords_DB = new addLastRecords_DB(sid,timeInfo, snowEarnings, snowPays);
-				/* Áö³­ ±â·ÏÀ¸·Î ÀúÀåÇÑ ÈÄ ÇöÀç ±â·ÏÁ¤º¸´Â ¾ø¾Ø´Ù. */
+				/* ì§€ë‚œ ê¸°ë¡ìœ¼ë¡œ ì €ì¥í•œ í›„ í˜„ì¬ ê¸°ë¡ì •ë³´ëŠ” ì—†ì•¤ë‹¤. */
 				nowEarnings = 0;
 				nowPays = 0;
-				/*for¹®¿¡¼­ ºüÁ®³ª¿È*/break;
+				/*forë¬¸ì—ì„œ ë¹ ì ¸ë‚˜ì˜´*/break;
 			}
 		}
-		/*Áö³­ ±â·Ï table »õ·Î°íÄ§*/showEarnings();
-		/*½Ã°£ ¼Â*/resetTime();
+		/*ì§€ë‚œ ê¸°ë¡ table ìƒˆë¡œê³ ì¹¨*/showEarnings();
+		/*ì‹œê°„ ì…‹*/
 		topBar.setVisible(false); topBar.setVisible(true);  
 		lastEarningsBar.setVisible(false); lastEarningsBar.setVisible(true); 
 	}//end of method 'resetEarnings()'
 	
 	
-	/* ÇöÀçÁÖ¹®ÁßÀÎ ³»¿ª Ç¥½Ã */
+	/* í˜„ì¬ì£¼ë¬¸ì¤‘ì¸ ë‚´ì—­ í‘œì‹œ */
 	public void resetTemporder() {
 		String tmp = "";
 		for(i=0; i<Order.ordermenuLength; i++) {
@@ -461,31 +461,22 @@ public class CafeTest {
 		bottomMain.setVisible(false);
 		bottomMain.setVisible(true);
 		
-		resetTime();
+		
 	}
 	
-	/* setMenuPanel¼Ó ¼öÁ¤ ÆĞ³Î ¿ÀÇÂ  */
+	/* setMenuPanelì† ìˆ˜ì • íŒ¨ë„ ì˜¤í”ˆ  */
 	public void opensetPanel() {
 		reMenuNameField.setText("");
 		reMenuPriceField.setText("");
-		setIntoPanel.setVisible(true); //¼öÁ¤Á¤º¸ ÀÔ·Â ÆĞ³Î º¸ÀÌ±â
+		setIntoPanel.setVisible(true); //ìˆ˜ì •ì •ë³´ ì…ë ¥ íŒ¨ë„ ë³´ì´ê¸°
 		
-		resetTime();
+		
 	}
 	
-	
-	/*½Ã°£ Ãâ·Â ¸Ş¼­µå*/
-	public void resetTime() {
-		Date time = new Date();
-		String timeStr = format1.format(time);
-		timeField.setText(timeStr);
-		topBar.setVisible(false);
-		topBar.setVisible(true);
-	}
 	
 	
 	public void pullupDBmenu() {
-		/* DB ¸Ş´º °¡Á®¿À±â */
+		/* DB ë©”ë‰´ ê°€ì ¸ì˜¤ê¸° */
 		for(i=0; i<menuLength; i++) {
 			selectMenu_DB selectMenu_DB = new selectMenu_DB(Integer.toString(i));
 		}
@@ -495,6 +486,7 @@ public class CafeTest {
 	
 	/* Launch the application. */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -506,46 +498,52 @@ public class CafeTest {
 			}
 		});
 		
-		/* ¸Ş´º ¹öÆ° »ı¼º */
+		/* ë©”ë‰´ ë²„íŠ¼ ìƒì„± */
 		for(i=0; i<menuLength; i++) {
 			MenuBtn[i] = new JButton();
 		}
 		
-		/*¡åMenu ÀÎ½ºÅÏ½º ¹è¿­ ÀüÃ¼ ÃÊ±âÈ­*/
+		/*â–¼Menu ì¸ìŠ¤í„´ìŠ¤ ë°°ì—´ ì „ì²´ ì´ˆê¸°í™”*/
 		for(i=0; i<menuLength; i++) {
 			menu[i] = new Menu();
 		}
-		/*¡åOrder ÀÎ½ºÅÏ½º ¹è¿­ ÀüÃ¼ ÃÊ±âÈ­*/
+		/*â–¼Order ì¸ìŠ¤í„´ìŠ¤ ë°°ì—´ ì „ì²´ ì´ˆê¸°í™”*/
 		for(i=0; i<orderLength; i++) {
 			order[i] = new Order();
 		}
 		
 		
-		/* ¸Ş´º table °ª »õ·Î°íÄ§ */
+		/* ë©”ë‰´ table ê°’ ìƒˆë¡œê³ ì¹¨ */
 		for(i=0; i<menuLength; i++) {
 			menuData[i][0] = menu[i].getMenuName();
-			menuData[i][1] = menu[i].getMenuName().equals("")?"":menu[i].getMenuPrice()+"¿ø";
+			menuData[i][1] = menu[i].getMenuName().equals("")?"":menu[i].getMenuPrice()+"ì›";
 		}
 		
-		/*¡åÁö³­ ÆÇ¸Å±â·Ï ¹è¿­ ÀüÃ¼ ÃÊ±âÈ­*/
+		/*â–¼ì§€ë‚œ íŒë§¤ê¸°ë¡ ë°°ì—´ ì „ì²´ ì´ˆê¸°í™”*/
 		for(i=0; i<LastRecords.recordsIndex; i++) {
 			record[i] = new LastRecords();
 		}
 		
-		/* ¡Ú¸ŞÀÎÈ­¸é ÁÖºĞÁ¤º¸ Ç¥ ÃÊ±âÈ­ */
+		/* â˜…ë©”ì¸í™”ë©´ ì£¼ë¶„ì •ë³´ í‘œ ì´ˆê¸°í™” */
 		for(i=0; i<orderLength; i++) {
 			orderData[i][0] = "";
 			orderData[i][1] = "";
 			orderData[i][2] = "";
 		}
 		
-		/*¸ŞÀÎÈ­¸é ÀÓ½ÃÁÖ¹®°ø°£ ÃÊ±âÈ­*/
+		/*ë©”ì¸í™”ë©´ ì„ì‹œì£¼ë¬¸ê³µê°„ ì´ˆê¸°í™”*/
 		for(i=0; i<Order.ordermenuLength; i++) {
 			tempMenu[i] = "";
 			tempQuantity[i] = 0;
 		}
 		tempPayprice = 0;
 		
+	}
+	
+	/*ì‹œê°„ ì¶œë ¥ ìŠ¤ë ˆë“œ ìƒì„±*/
+	private void addTimeThread() {
+		TimeThread th = new TimeThread(timeField, topBar);
+		th.start();
 	}
 	
 	/* Create the application. */
@@ -555,10 +553,10 @@ public class CafeTest {
 	
 	/* Initialize the contents of the frame. */
 	private void Main() {
-		//µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí »ı¼º
+		//ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸” ìƒì„±
 		CreateTables_DB CreateTables_DB = new CreateTables_DB();
 
-		/* ÇÁ·¹ÀÓ »ı¼º */
+		/* í”„ë ˆì„ ìƒì„± */
 		frame = new JFrame("Dessert Cafe");
 		frame.setBounds(100, 100, 956, 659);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -567,14 +565,14 @@ public class CafeTest {
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
 		
-		/* topBar »ó´Ü ÆĞ³Î ¼Ó¼º */
+		/* topBar ìƒë‹¨ íŒ¨ë„ ì†ì„± */
 		topBar.setBackground(new Color(230, 230, 250));
 		topBar.setBounds(0, 0, 938, 100);
 		frame.getContentPane().add(topBar);
 		topBar.setLayout(null);
 		topBar.setVisible(true);
 		
-		/* bottomMain ÇÏ´Ü ÆĞ³Î ¼Ó¼º */
+		/* bottomMain í•˜ë‹¨ íŒ¨ë„ ì†ì„± */
 		bottomMain.setBackground(new Color(240, 248, 255));
 		bottomMain.setBounds(0, 98, 938, 514);
 		frame.getContentPane().add(bottomMain);
@@ -582,7 +580,7 @@ public class CafeTest {
 		bottomMain.add(table);
 		bottomMain.setVisible(true);
 		
-		/* bottomMain ¼Ó ÁÖ¹®Á¤º¸ table ¼Ó¼º */
+		/* bottomMain ì† ì£¼ë¬¸ì •ë³´ table ì†ì„± */
 		table.setRowSelectionAllowed(false);
 		JScrollPane scrollPane = new JScrollPane(table);
 		table.getTableHeader().setReorderingAllowed(false);		
@@ -591,7 +589,7 @@ public class CafeTest {
 		scrollPane.setViewportBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(218, 112, 214)));
 		bottomMain.add(scrollPane);
 		
-		/* bottomMain ¿ìÆí -  ÁÖ¹®ÀÌ ÀÌ·ïÁö´Â ÆĞ³Î ¼±¾ğ°ú ¼Ó¼º Á¤ÀÇ */
+		/* bottomMain ìš°í¸ -  ì£¼ë¬¸ì´ ì´ë¤„ì§€ëŠ” íŒ¨ë„ ì„ ì–¸ê³¼ ì†ì„± ì •ì˜ */
 		square.setBackground(Color.WHITE);
 		square.setBorder(new LineBorder(new Color(128, 128, 128)));
 		square.setBounds(364, 22, 546, 467);
@@ -599,230 +597,231 @@ public class CafeTest {
 		square.setLayout(null);
 		JLabel label = new JLabel("\uBA54\uB274 \uC8FC\uBB38 - \uC120\uD0DD \uAC00\uB2A5");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		label.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		label.setBounds(17, 12, 153, 18);
 		square.add(label);
 		JLabel lblNewLabel = new JLabel("\uB2E8\uC704:\uB0B1\uAC1C(\uC794/\uAC1C)");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		lblNewLabel.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		lblNewLabel.setBounds(407, 12, 125, 18);
 		square.add(lblNewLabel);
 		
 
 		
 		
-		/* ÁÖ¹® ¼±ÅÃ Ç¥½Ã¶õ ¶óº§°ú ÅØ½ºÆ®ÇÊµå */
+		/* ì£¼ë¬¸ ì„ íƒ í‘œì‹œë€ ë¼ë²¨ê³¼ í…ìŠ¤íŠ¸í•„ë“œ */
 		JLabel payLabel = new JLabel("\uC8FC\uBB38/\uACB0\uC81C \uC815\uBCF4");
 		payLabel.setBackground(new Color(255, 228, 225));
-		payLabel.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		payLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		payLabel.setBounds(7, 439, 110, 18);
 		square.add(payLabel);
-		/*¸Ş´º ÇÊµå ¼±¾ğ*/payInfoMenu = new JTextField();
+		/*ë©”ë‰´ í•„ë“œ ì„ ì–¸*/payInfoMenu = new JTextField();
 		payInfoMenu.setBackground(Color.WHITE);
 		payInfoMenu.setEditable(false);
-		payInfoMenu.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		payInfoMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		payInfoMenu.setBounds(115, 430, 238, 37);
 		square.add(payInfoMenu);
 		payInfoMenu.setColumns(10);
-		/*°¡°İ ÇÊµå ¼±¾ğ*/payInfoPrice = new JTextField();
+		/*ê°€ê²© í•„ë“œ ì„ ì–¸*/payInfoPrice = new JTextField();
 		payInfoPrice.setBackground(Color.WHITE);
 		payInfoPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		payInfoPrice.setEditable(false);
-		payInfoPrice.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		payInfoPrice.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		payInfoPrice.setBounds(350, 430, 73, 37);
 		square.add(payInfoPrice);
 		payInfoPrice.setColumns(10);
 		
 		
-		/* °áÁ¦ ¹öÆ° */
+		
+		/* ê²°ì œ ë²„íŠ¼ */
 		JButton btn_Pay = new JButton("\uACB0\uC81C");
 		btn_Pay.setBackground(new Color(255, 140, 0));
 		btn_Pay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/* °áÁ¦ */
-				if(tempMenu[0].equals("")==false) { //Ã¹¹øÂ° ¸Ş´º¼±ÅÃ¹è¿­ÀÎµ¦½º°¡ ºñ¾îÀÖ´ÂÁö È®ÀÎÇÏ¿© ÁÖ¹®ÇÒ Á¤º¸°¡ ÀÖ´ÂÁö È®ÀÎ.
+				/* ê²°ì œ */
+				if(tempMenu[0].equals("")==false) { //ì²«ë²ˆì§¸ ë©”ë‰´ì„ íƒë°°ì—´ì¸ë±ìŠ¤ê°€ ë¹„ì–´ìˆëŠ”ì§€ í™•ì¸í•˜ì—¬ ì£¼ë¬¸í•  ì •ë³´ê°€ ìˆëŠ”ì§€ í™•ì¸.
 					payOrder();
 				}else {
-					JOptionPane.showMessageDialog(null, "ÁÖ¹®ÇÒ Á¤º¸°¡ ¾ø½À´Ï´Ù.");
+					JOptionPane.showMessageDialog(null, "ì£¼ë¬¸í•  ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.");
 				}
-				/*½Ã°£ »õ·Î°íÄ§*/resetTime();
+				/*ì‹œê°„ ìƒˆë¡œê³ ì¹¨*/
 			}
 		});
-		btn_Pay.setFont(new Font("±¼¸²", Font.PLAIN, 14));
+		btn_Pay.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 14));
 		btn_Pay.setBounds(421, 430, 65, 36);
 		square.add(btn_Pay);
 		
 		
-		JLabel label03 = new JLabel("ÁÖ¹® ÁøÇà Ãë¼Ò");
-		label03.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		JLabel label03 = new JLabel("ì£¼ë¬¸ ì§„í–‰ ì·¨ì†Œ");
+		label03.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		
-		/* ÁÖ¹® Ãë¼Ò ¹öÆ° */
+		/* ì£¼ë¬¸ ì·¨ì†Œ ë²„íŠ¼ */
 		JButton btn_Cancle = new JButton("\uCDE8\uC18C");
 		btn_Cancle.setBackground(new Color(238, 232, 170));
 		btn_Cancle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(tempMenu[0].equals("")==false) { //ÁÖ¹®ÇÏ´ø Á¤º¸°¡ ÀÖÀ»¶§¸¸ 
+				if(tempMenu[0].equals("")==false) { //ì£¼ë¬¸í•˜ë˜ ì •ë³´ê°€ ìˆì„ë•Œë§Œ 
 					cancelOrder();
 					JOptionPane.showMessageDialog(null, label03,"",JOptionPane.ERROR_MESSAGE);
 				}
-				/*½Ã°£ ¼Â*/resetTime();
+				/*ì‹œê°„ ì…‹*/
 			}
 		});
-		btn_Cancle.setFont(new Font("±¼¸²", Font.PLAIN, 14));
+		btn_Cancle.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 14));
 		btn_Cancle.setBounds(485, 430, 62, 36);
 		square.add(btn_Cancle);
 		
 		
 		
-		/* ¸Ş´º ¹öÆ° Á¤ÀÇ */
+		/* ë©”ë‰´ ë²„íŠ¼ ì •ì˜ */
 		MenuBtn[0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(menu[0].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[0].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(0);
 				}
 				
 			}
 		});
 		MenuBtn[0].setBackground(new Color(255, 192, 203));
-		MenuBtn[0].setFont(new Font("±¼¸²", Font.BOLD, 16));
+		MenuBtn[0].setFont(new Font("êµ´ë¦¼", Font.BOLD, 16));
 		MenuBtn[0].setBounds(17, 45, 164, 79);
 		square.add(MenuBtn[0]);
 		
 		MenuBtn[1].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(menu[1].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[1].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(1);
 				}
 			}
 		});
 		MenuBtn[1].setBackground(new Color(255, 192, 203));
-		MenuBtn[1].setFont(new Font("±¼¸²", Font.BOLD, 16));
+		MenuBtn[1].setFont(new Font("êµ´ë¦¼", Font.BOLD, 16));
 		MenuBtn[1].setBounds(191, 45, 164, 79);
 		square.add(MenuBtn[1]);
 		
 		MenuBtn[2].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[2].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[2].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(2);
 				}
 			}
 		});
 		MenuBtn[2].setBackground(new Color(255, 192, 203));
-		MenuBtn[2].setFont(new Font("±¼¸²", Font.BOLD, 16));
+		MenuBtn[2].setFont(new Font("êµ´ë¦¼", Font.BOLD, 16));
 		MenuBtn[2].setBounds(365, 45, 164, 79);
 		square.add(MenuBtn[2]);
 		
 		MenuBtn[3].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[3].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[3].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(3);
 				}
 			}
 		});
 		MenuBtn[3].setBackground(new Color(255, 192, 203));
-		MenuBtn[3].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[3].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[3].setBounds(17, 136, 164, 79);
 		square.add(MenuBtn[3]);
 		MenuBtn[4].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[4].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[4].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(4);
 				}
 			}
 		});		
 		MenuBtn[4].setBackground(new Color(255, 192, 203));
-		MenuBtn[4].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[4].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[4].setBounds(191, 136, 164, 79);
 		square.add(MenuBtn[4]);
 		
 		MenuBtn[5].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[5].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[5].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(5);
 				}
 			}
 		});		
 		MenuBtn[5].setBackground(new Color(255, 192, 203));
-		MenuBtn[5].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[5].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[5].setBounds(365, 136, 164, 79);
 		square.add(MenuBtn[5]);
 		
 		MenuBtn[6].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[6].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[6].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(6);
 				}
 			}
 		});
 		
 		MenuBtn[6].setBackground(new Color(255, 192, 203));
-		MenuBtn[6].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[6].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[6].setBounds(17, 227, 164, 79);
 		square.add(MenuBtn[6]);
 		
 		MenuBtn[7].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[7].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[7].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(7);
 				}
 			}
 		});
 		MenuBtn[7].setBackground(new Color(255, 192, 203));
-		MenuBtn[7].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[7].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[7].setBounds(191, 227, 164, 79);
 		square.add(MenuBtn[7]);
 		
 		MenuBtn[8].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[8].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[8].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(8);
 				}
 			}
 		});		
 		MenuBtn[8].setBackground(new Color(255, 192, 203));
-		MenuBtn[8].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[8].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[8].setBounds(365, 227, 164, 79);
 		square.add(MenuBtn[8]);
 		
 		MenuBtn[9].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[9].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[9].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(9);
 				}
 			}
 		});
 		
 		MenuBtn[9].setBackground(new Color(255, 192, 203));
-		MenuBtn[9].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[9].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[9].setBounds(17, 318, 164, 79);
 		square.add(MenuBtn[9]);
 		
 		MenuBtn[10].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[10].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[10].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(10);
 				}
 			}
 		});	
 		MenuBtn[10].setBackground(new Color(255, 192, 203));
-		MenuBtn[10].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[10].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[10].setBounds(191, 318, 164, 79);
 		square.add(MenuBtn[10]);
 		
 		MenuBtn[11].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(menu[11].getMenuName().equals("")==false) { //¸Ş´º°¡ ºñ¾îÀÖÁö ¾ÊÀ»¶§ ÀÓ½ÃÁÖ¹®Á¤º¸¿¡ ÀúÀå
+				if(menu[11].getMenuName().equals("")==false) { //ë©”ë‰´ê°€ ë¹„ì–´ìˆì§€ ì•Šì„ë•Œ ì„ì‹œì£¼ë¬¸ì •ë³´ì— ì €ì¥
 					pickMenu(11);
 				}
 			}
 		});		
 		MenuBtn[11].setBackground(new Color(255, 192, 203));
-		MenuBtn[11].setFont(new Font("±¼¸²", Font.BOLD, 15));
+		MenuBtn[11].setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		MenuBtn[11].setBounds(365, 318, 164, 79);
 		square.add(MenuBtn[11]);
 	
 		
-		/* ¸Ş´º Ãß°¡ ÆĞ³Î ¼±¾ğ°ú ¼Ó¼º */
+		/* ë©”ë‰´ ì¶”ê°€ íŒ¨ë„ ì„ ì–¸ê³¼ ì†ì„± */
 		JPanel addMenuBar = new JPanel();
 		addMenuBar.setBorder(new LineBorder(Color.GRAY));
 		addMenuBar.setBackground(Color.WHITE);
@@ -830,126 +829,126 @@ public class CafeTest {
 		frame.getContentPane().add(addMenuBar);
 		addMenuBar.setLayout(null);
 		JLabel label_1 = new JLabel("\uBA54\uB274 \uCD94\uAC00");
-		label_1.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		label_1.setFont(new Font("êµ´ë¦¼", Font.BOLD, 18));
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setBounds(403, 12, 114, 31);
 		addMenuBar.add(label_1);
 		addMenuBar.setVisible(false);
-		/*±¸¼º¿ä¼Òµé*/
+		/*êµ¬ì„±ìš”ì†Œë“¤*/
 		JLabel label1_addMenu = new JLabel("\uC0C8 \uBA54\uB274 \uC774\uB984");
 		label1_addMenu.setHorizontalAlignment(SwingConstants.CENTER);
-		label1_addMenu.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		label1_addMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		label1_addMenu.setBounds(219, 110, 120, 31);
 		addMenuBar.add(label1_addMenu);
 		JLabel label_2 = new JLabel("\uAC00\uACA9");
-		label_2.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		label_2.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setBounds(282, 167, 62, 18);
 		addMenuBar.add(label_2);
-		/*¸Ş´ºÀÌ¸§*/str_newMenuName = new JTextField();
-		str_newMenuName.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		/*ë©”ë‰´ì´ë¦„*/str_newMenuName = new JTextField();
+		str_newMenuName.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		str_newMenuName.setBounds(347, 108, 209, 37);
 		addMenuBar.add(str_newMenuName);
 		str_newMenuName.setColumns(10);
-		/*¸Ş´º °¡°İ*/int_newMenuPrice = new JTextField();
-		int_newMenuPrice.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		/*ë©”ë‰´ ê°€ê²©*/int_newMenuPrice = new JTextField();
+		int_newMenuPrice.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		int_newMenuPrice.setColumns(10);
 		int_newMenuPrice.setBounds(347, 159, 209, 37);
 		addMenuBar.add(int_newMenuPrice);
 		JLabel label3_addMenu = new JLabel("\uAC00\uACA9\uC740 \uC22B\uC790\uB9CC \uC785\uB825\uD558\uC138\uC694.");
-		label3_addMenu.setFont(new Font("±¼¸²", Font.PLAIN, 13));
+		label3_addMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 13));
 		label3_addMenu.setBounds(285, 207, 260, 18);
 		addMenuBar.add(label3_addMenu);
 		label3_addMenu.setForeground(new Color(205, 92, 92));
 		
-		/*»õ ¸Ş´º µî·Ï¹öÆ°*/
+		/*ìƒˆ ë©”ë‰´ ë“±ë¡ë²„íŠ¼*/
 		JButton setIntoMenu_btn = new JButton("\uB4F1\uB85D\uD558\uAE30");
 		setIntoMenu_btn.setBackground(new Color(216, 191, 216));
 		setIntoMenu_btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JLabel label101 = new JLabel("¸Ş´º ÀÌ¸§À¸·Î °ø¹éÀÌ ¿Ã ¼ö ¾ø½À´Ï´Ù.");
-				label101.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+				JLabel label101 = new JLabel("ë©”ë‰´ ì´ë¦„ìœ¼ë¡œ ê³µë°±ì´ ì˜¬ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				label101.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 				label101.setForeground(Color.RED);
 				
-				/*¸Ş´º ÀÔ·Â ¾ÈÇßÀ»°æ¿ì °æ°íÃ¢ ¹ß»ı*/
+				/*ë©”ë‰´ ì…ë ¥ ì•ˆí–ˆì„ê²½ìš° ê²½ê³ ì°½ ë°œìƒ*/
 				if(str_newMenuName.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, label101,"ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE); 
+					JOptionPane.showMessageDialog(null, label101,"ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE); 
 					return;
 				}
 				
-				JLabel label04 = new JLabel("ÀÔ·ÂµÈ °¡°İÀÌ ¾ø½À´Ï´Ù.");
-				label04.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+				JLabel label04 = new JLabel("ì…ë ¥ëœ ê°€ê²©ì´ ì—†ìŠµë‹ˆë‹¤.");
+				label04.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 				label04.setForeground(Color.RED);
 				
-				/*°¡°İ ¹ÌÀÔ·Â½Ã °æ°íÃ¢ ¹ß»ı*/
+				/*ê°€ê²© ë¯¸ì…ë ¥ì‹œ ê²½ê³ ì°½ ë°œìƒ*/
 				if(int_newMenuPrice.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, label04,"ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE); 
+					JOptionPane.showMessageDialog(null, label04,"ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE); 
 					int_newMenuPrice.setText(""); 
 					return;
 				}
 				
-				JLabel label05 = new JLabel("°¡°İÀº ¼ıÀÚ·Î¸¸ ÀÔ·ÂÇÏ¼¼¿ä.");
-				label05.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+				JLabel label05 = new JLabel("ê°€ê²©ì€ ìˆ«ìë¡œë§Œ ì…ë ¥í•˜ì„¸ìš”.");
+				label05.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 				label05.setForeground(Color.RED);
 				
-				/*ÀÔ·Â¹ŞÀº °¡°İÀÌ ¼ıÀÚ°¡ ¾Æ´Ò °æ¿ì °æ°íÃ¢ ¹ß»ı.*/
+				/*ì…ë ¥ë°›ì€ ê°€ê²©ì´ ìˆ«ìê°€ ì•„ë‹ ê²½ìš° ê²½ê³ ì°½ ë°œìƒ.*/
 				char tmp;
 				for(i=0; i<int_newMenuPrice.getText().length(); i++) {
 					tmp = int_newMenuPrice.getText().charAt(i);
 					if(Character.isDigit(tmp)==false) {
-						JOptionPane.showMessageDialog(null, label05,"ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, label05,"ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE);
 						int_newMenuPrice.setText("");
 						return;
 					}
 				}
 				
-				/* if ¸ğµç ¿À·ù°¡ ¾øÀ¸¸é ¸Ş´º Ãß°¡ */
+				/* if ëª¨ë“  ì˜¤ë¥˜ê°€ ì—†ìœ¼ë©´ ë©”ë‰´ ì¶”ê°€ */
 				addMenu(str_newMenuName.getText(), Integer.parseInt(int_newMenuPrice.getText()));
 				str_newMenuName.setText("");
 				int_newMenuPrice.setText("");
 			}
 		});
-		setIntoMenu_btn.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		setIntoMenu_btn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		setIntoMenu_btn.setBounds(580, 107, 129, 89);
 		addMenuBar.add(setIntoMenu_btn);
 		
 		
 		JLabel label_4 = new JLabel("\uBA54\uB274 \uC774\uB984\uC740 8\uC790 \uC774\uD558\uB97C \uAD8C\uC7A5\uD569\uB2C8\uB2E4.");
 		label_4.setForeground(new Color(205, 92, 92));
-		label_4.setFont(new Font("±¼¸²", Font.PLAIN, 13));
+		label_4.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 13));
 		label_4.setBounds(285, 225, 234, 18);
 		addMenuBar.add(label_4);
 		
 		
-		/* ¸Ş´º »èÁ¦ ÆĞ³Î ¼Ó¼º */
+		/* ë©”ë‰´ ì‚­ì œ íŒ¨ë„ ì†ì„± */
 		deleteMenuBar.setBackground(Color.WHITE);
 		deleteMenuBar.setBounds(0, 98, 938, 514);
 		frame.getContentPane().add(deleteMenuBar);
 		deleteMenuBar.setLayout(null);
 		JLabel label_3 = new JLabel("\uBA54\uB274 \uC0AD\uC81C");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		label_3.setFont(new Font("êµ´ë¦¼", Font.BOLD, 18));
 		label_3.setBounds(403, 12, 114, 31);
 		deleteMenuBar.add(label_3);
 		deleteMenuBar.setVisible(false);		
 		
 		
-		/* deleteMenuBar¼Ó ¸Ş´º ¸ñ·Ï table */
+		/* deleteMenuBarì† ë©”ë‰´ ëª©ë¡ table */
 		JScrollPane scrollPane_3 = new JScrollPane(table_menu2);
 		scrollPane_3.setEnabled(false);
 		scrollPane_3.setBounds(69, 55, 348, 423);
 		deleteMenuBar.add(scrollPane_3);
 		
 		
-		/* deleteMenuBar¼Ó ¸Ş´º »èÁ¦ ¹öÆ° */
+		/* deleteMenuBarì† ë©”ë‰´ ì‚­ì œ ë²„íŠ¼ */
 		JButton delete_btn01 = new JButton("\uC0AD\uC81C");
 		delete_btn01.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				deleteMenuin(0);
 			}
 		});
-		delete_btn01.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn01.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn01.setBackground(new Color(250, 128, 114));
 		delete_btn01.setBounds(420, 82, 73, 28);
 		deleteMenuBar.add(delete_btn01);
@@ -960,7 +959,7 @@ public class CafeTest {
 				deleteMenuin(1);
 			}
 		});
-		delete_btn02.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn02.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn02.setBackground(new Color(250, 128, 114));
 		delete_btn02.setBounds(420, 114, 73, 28);
 		deleteMenuBar.add(delete_btn02);
@@ -971,7 +970,7 @@ public class CafeTest {
 				deleteMenuin(2);
 			}
 		});
-		delete_btn03.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn03.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn03.setBackground(new Color(250, 128, 114));
 		delete_btn03.setBounds(420, 147, 73, 28);
 		deleteMenuBar.add(delete_btn03);
@@ -982,7 +981,7 @@ public class CafeTest {
 				deleteMenuin(3);
 			}
 		});
-		delete_btn04.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn04.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn04.setBackground(new Color(250, 128, 114));
 		delete_btn04.setBounds(420, 180, 73, 28);
 		deleteMenuBar.add(delete_btn04);
@@ -993,7 +992,7 @@ public class CafeTest {
 				deleteMenuin(4);
 			}
 		});
-		delete_btn05.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn05.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn05.setBackground(new Color(250, 128, 114));
 		delete_btn05.setBounds(420, 212, 73, 28);
 		deleteMenuBar.add(delete_btn05);
@@ -1004,7 +1003,7 @@ public class CafeTest {
 				deleteMenuin(5);
 			}
 		});
-		delete_btn06.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn06.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn06.setBackground(new Color(250, 128, 114));
 		delete_btn06.setBounds(420, 245, 73, 28);
 		deleteMenuBar.add(delete_btn06);
@@ -1015,7 +1014,7 @@ public class CafeTest {
 				deleteMenuin(6);
 			}
 		});
-		delete_btn07.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn07.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn07.setBackground(new Color(250, 128, 114));
 		delete_btn07.setBounds(420, 277, 73, 28);
 		deleteMenuBar.add(delete_btn07);
@@ -1026,7 +1025,7 @@ public class CafeTest {
 				deleteMenuin(7);
 			}
 		});
-		delete_btn08.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn08.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn08.setBackground(new Color(250, 128, 114));
 		delete_btn08.setBounds(420, 311, 73, 28);
 		deleteMenuBar.add(delete_btn08);
@@ -1037,7 +1036,7 @@ public class CafeTest {
 				deleteMenuin(8);
 			}
 		});
-		delete_btn09.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn09.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn09.setBackground(new Color(250, 128, 114));
 		delete_btn09.setBounds(420, 344, 73, 28);
 		deleteMenuBar.add(delete_btn09);
@@ -1048,7 +1047,7 @@ public class CafeTest {
 				deleteMenuin(9);
 			}
 		});
-		delete_btn10.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn10.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn10.setBackground(new Color(250, 128, 114));
 		delete_btn10.setBounds(420, 376, 73, 28);
 		deleteMenuBar.add(delete_btn10);
@@ -1059,7 +1058,7 @@ public class CafeTest {
 				deleteMenuin(10);
 			}
 		});
-		delete_btn11.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn11.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn11.setBackground(new Color(250, 128, 114));
 		delete_btn11.setBounds(420, 409, 73, 28);
 		deleteMenuBar.add(delete_btn11);
@@ -1070,13 +1069,13 @@ public class CafeTest {
 				deleteMenuin(11);
 			}
 		});
-		delete_btn12.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		delete_btn12.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		delete_btn12.setBackground(new Color(250, 128, 114));
 		delete_btn12.setBounds(420, 442, 73, 28);
 		deleteMenuBar.add(delete_btn12);
 
 		
-		/* ¸Ş´º ¼öÁ¤ ÆĞ³Î ¼Ó¼º */
+		/* ë©”ë‰´ ìˆ˜ì • íŒ¨ë„ ì†ì„± */
 		JPanel setMenuBar = new JPanel();
 		setMenuBar.setBackground(Color.WHITE);
 		setMenuBar.setBounds(0, 98, 938, 514);
@@ -1084,13 +1083,13 @@ public class CafeTest {
 		setMenuBar.setLayout(null);
 		JLabel label_setMenu = new JLabel("\uBA54\uB274 \uC218\uC815");
 		label_setMenu.setBounds(403, 12, 114, 31);
-		label_setMenu.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		label_setMenu.setFont(new Font("êµ´ë¦¼", Font.BOLD, 18));
 		label_setMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		setMenuBar.add(label_setMenu);
 		setMenuBar.setVisible(false);
 		
 		
-		/* addMenuBarÆĞ³Î ¼Ó 'µ¹¾Æ°¡±â' ¹öÆ° */
+		/* addMenuBaríŒ¨ë„ ì† 'ëŒì•„ê°€ê¸°' ë²„íŠ¼ */
 		JButton backto_addMenu = new JButton("\uB3CC\uC544\uAC00\uAE30");
 		backto_addMenu.setBackground(new Color(238, 232, 170));
 		backto_addMenu.addActionListener(new ActionListener() {
@@ -1103,16 +1102,16 @@ public class CafeTest {
 				setMenuBar.setVisible(false);
 				deleteMenuBar.setVisible(false);
 				lastEarningsBar.setVisible(false);
-				/*½Ã°£ ¼Â*/resetTime();
+				/*ì‹œê°„ ì…‹*/
 				resetingShowingMenu();
 			}
 		});
-		backto_addMenu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		backto_addMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		backto_addMenu.setBounds(819, 16, 105, 27);
 		addMenuBar.add(backto_addMenu);
 		
 		
-		/* ¸Ş´º ¼öÁ¤ ÆĞ³Î ¼Ó ¼±ÅÃ¸Ş´º ¼öÁ¤ ÆĞ³Î*/
+		/* ë©”ë‰´ ìˆ˜ì • íŒ¨ë„ ì† ì„ íƒë©”ë‰´ ìˆ˜ì • íŒ¨ë„*/
 		setIntoPanel.setBackground(new Color(240, 248, 255));
 		setIntoPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(218, 112, 214)));
 		setIntoPanel.setBounds(515, 150, 380, 200);
@@ -1121,25 +1120,25 @@ public class CafeTest {
 		setIntoPanel.setVisible(false);
 		
 		
-		/* ¸Ş´º ÀÎµ¦½º¸¶´ÙÀÇ ¼öÁ¤ ¹öÆ° */
-		JButton setButton01 = new JButton("¼öÁ¤");
+		/* ë©”ë‰´ ì¸ë±ìŠ¤ë§ˆë‹¤ì˜ ìˆ˜ì • ë²„íŠ¼ */
+		JButton setButton01 = new JButton("ìˆ˜ì •");
 		setButton01.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(menu[0].getMenuName().equals("")) { //ºó ¸Ş´º¸¦ ¼±ÅÃÇÏ¸é ¾Æ¹«°Íµµ ½ÇÇàÇÏÁö ¾Ê´Â´Ù.
+				if(menu[0].getMenuName().equals("")) { //ë¹ˆ ë©”ë‰´ë¥¼ ì„ íƒí•˜ë©´ ì•„ë¬´ê²ƒë„ ì‹¤í–‰í•˜ì§€ ì•ŠëŠ”ë‹¤.
 					setIntoPanel.setVisible(false);
 					return;
-				}else { //¸Ş´º ¼öÁ¤À» ¼±ÅÃ
-					numtemp=0; //ÇØ´ç ¸Ş´ºÀÇ ÀÎµ¦½º°ªÀ» ÀúÀå.
+				}else { //ë©”ë‰´ ìˆ˜ì •ì„ ì„ íƒ
+					numtemp=0; //í•´ë‹¹ ë©”ë‰´ì˜ ì¸ë±ìŠ¤ê°’ì„ ì €ì¥.
 					opensetPanel();
 				}
 			}
 		});
-		setButton01.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton01.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton01.setBackground(new Color(255, 222, 173));
 		setButton01.setBounds(420, 82, 69, 28);
 		setMenuBar.add(setButton01);
 		
-		JButton setButton02 = new JButton("¼öÁ¤");
+		JButton setButton02 = new JButton("ìˆ˜ì •");
 		setButton02.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[1].getMenuName().equals("")) {
@@ -1151,12 +1150,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton02.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton02.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton02.setBackground(new Color(255, 222, 173));
 		setButton02.setBounds(420, 114, 69, 28);
 		setMenuBar.add(setButton02);
 		
-		JButton setButton03 = new JButton("¼öÁ¤");
+		JButton setButton03 = new JButton("ìˆ˜ì •");
 		setButton03.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[2].getMenuName().equals("")) {
@@ -1168,12 +1167,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton03.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton03.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton03.setBackground(new Color(255, 222, 173));
 		setButton03.setBounds(420, 147, 69, 28);
 		setMenuBar.add(setButton03);
 		
-		JButton setButton04 = new JButton("¼öÁ¤");
+		JButton setButton04 = new JButton("ìˆ˜ì •");
 		setButton04.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[3].getMenuName().equals("")) {
@@ -1185,12 +1184,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton04.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton04.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton04.setBackground(new Color(255, 222, 173));
 		setButton04.setBounds(420, 180, 69, 28);
 		setMenuBar.add(setButton04);
 		
-		JButton setButton05 = new JButton("¼öÁ¤");
+		JButton setButton05 = new JButton("ìˆ˜ì •");
 		setButton05.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[4].getMenuName().equals("")) {
@@ -1202,12 +1201,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton05.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton05.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton05.setBackground(new Color(255, 222, 173));
 		setButton05.setBounds(420, 212, 69, 28);
 		setMenuBar.add(setButton05);
 		
-		JButton setButton06 = new JButton("¼öÁ¤");
+		JButton setButton06 = new JButton("ìˆ˜ì •");
 		setButton06.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[5].getMenuName().equals("")) {
@@ -1219,12 +1218,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton06.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton06.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton06.setBackground(new Color(255, 222, 173));
 		setButton06.setBounds(420, 245, 69, 28);
 		setMenuBar.add(setButton06);
 		
-		JButton setButton07 = new JButton("¼öÁ¤");
+		JButton setButton07 = new JButton("ìˆ˜ì •");
 		setButton07.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[6].getMenuName().equals("")) {
@@ -1236,12 +1235,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton07.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton07.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton07.setBackground(new Color(255, 222, 173));
 		setButton07.setBounds(420, 277,69, 28);
 		setMenuBar.add(setButton07);
 		
-		JButton setButton08 = new JButton("¼öÁ¤");
+		JButton setButton08 = new JButton("ìˆ˜ì •");
 		setButton08.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[7].getMenuName().equals("")) {
@@ -1253,12 +1252,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton08.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton08.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton08.setBackground(new Color(255, 222, 173));
 		setButton08.setBounds(420, 311, 69, 28);
 		setMenuBar.add(setButton08);
 		
-		JButton setButton09 = new JButton("¼öÁ¤");
+		JButton setButton09 = new JButton("ìˆ˜ì •");
 		setButton09.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[8].getMenuName().equals("")) {
@@ -1270,12 +1269,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton09.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton09.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton09.setBackground(new Color(255, 222, 173));
 		setButton09.setBounds(420, 344, 69, 28);
 		setMenuBar.add(setButton09);
 		
-		JButton setButton10 = new JButton("¼öÁ¤");
+		JButton setButton10 = new JButton("ìˆ˜ì •");
 		setButton10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[9].getMenuName().equals("")) {
@@ -1287,12 +1286,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton10.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton10.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton10.setBackground(new Color(255, 222, 173));
 		setButton10.setBounds(420, 376, 69, 28);
 		setMenuBar.add(setButton10);
 		
-		JButton setButton11 = new JButton("¼öÁ¤");
+		JButton setButton11 = new JButton("ìˆ˜ì •");
 		setButton11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[10].getMenuName().equals("")) {
@@ -1304,12 +1303,12 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton11.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton11.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton11.setBackground(new Color(255, 222, 173));
 		setButton11.setBounds(420, 409, 69, 28);
 		setMenuBar.add(setButton11);
 		
-		JButton setButton12 = new JButton("¼öÁ¤");
+		JButton setButton12 = new JButton("ìˆ˜ì •");
 		setButton12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(menu[11].getMenuName().equals("")) {
@@ -1321,13 +1320,13 @@ public class CafeTest {
 				}
 			}
 		});
-		setButton12.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		setButton12.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		setButton12.setBackground(new Color(255, 222, 173));
 		setButton12.setBounds(420, 442, 69, 28);
 		setMenuBar.add(setButton12);
 		
 		
-		/*table ÀÏºÎ¼Ó¼º*/
+		/*table ì¼ë¶€ì†ì„±*/
 		DefaultTableCellRenderer celAlignCenter = new DefaultTableCellRenderer();
 		celAlignCenter.setHorizontalAlignment(JLabel.CENTER);
 		DefaultTableCellRenderer celAlignRight = new DefaultTableCellRenderer();
@@ -1335,95 +1334,95 @@ public class CafeTest {
 
 		
 		
-		/* ¸Ş´º table ¼Ó¼º */
+		/* ë©”ë‰´ table ì†ì„± */
 		table_menu2.setPreferredScrollableViewportSize(new Dimension(284, 348));
 		table_menu2.setFillsViewportHeight(true);
-		table_menu2.getColumn("¸Ş´º ÀÌ¸§").setCellRenderer(celAlignCenter); //align
-		table_menu2.getColumn("¸Ş´º ÀÌ¸§").setPreferredWidth(150); //width 
-		table_menu2.getColumn("°¡°İ").setCellRenderer(celAlignRight);
-		table_menu2.getColumn("°¡°İ").setPreferredWidth(7);
+		table_menu2.getColumn("ë©”ë‰´ ì´ë¦„").setCellRenderer(celAlignCenter); //align
+		table_menu2.getColumn("ë©”ë‰´ ì´ë¦„").setPreferredWidth(150); //width 
+		table_menu2.getColumn("ê°€ê²©").setCellRenderer(celAlignRight);
+		table_menu2.getColumn("ê°€ê²©").setPreferredWidth(7);
 		table_menu2.setRowHeight(33);
 		table_menu2.setEnabled(false);
 		table_menu2.setBounds(91, 68, 723, 409);
 		table_menu2.getTableHeader().setReorderingAllowed(false);
 		table_menu2.setForeground(new Color(128, 0, 128));
-		table_menu2.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		table_menu2.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		
 		
-		/* ÁÖ¹®Á¤º¸ table ¼Ó¼º */
+		/* ì£¼ë¬¸ì •ë³´ table ì†ì„± */
 		table.setEnabled(false);
 		table.setBounds(2, 33, 50, 359);
 		table.setForeground(new Color(128, 0, 128));
-		table.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		table.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 15));
 		table.setPreferredScrollableViewportSize(new Dimension(284, 348));
-		table.getColumn("¹øÈ£").setPreferredWidth(5); //width
-		table.getColumn("¹øÈ£").setCellRenderer(celAlignCenter); //align
-		table.getColumn("ÁÖ¹® ¸Ş´º").setPreferredWidth(200); //width 
-		table.getColumn("°áÁ¦ ±İ¾×").setPreferredWidth(55); //width
-		table.getColumn("°áÁ¦ ±İ¾×").setCellRenderer(celAlignRight); //align
+		table.getColumn("ë²ˆí˜¸").setPreferredWidth(5); //width
+		table.getColumn("ë²ˆí˜¸").setCellRenderer(celAlignCenter); //align
+		table.getColumn("ì£¼ë¬¸ ë©”ë‰´").setPreferredWidth(200); //width 
+		table.getColumn("ê²°ì œ ê¸ˆì•¡").setPreferredWidth(55); //width
+		table.getColumn("ê²°ì œ ê¸ˆì•¡").setCellRenderer(celAlignRight); //align
 		table.setRowHeight(27);
 		
-		/* Áö³­±â·Ï ÆĞ³Î ¼Ó¼º */
+		/* ì§€ë‚œê¸°ë¡ íŒ¨ë„ ì†ì„± */
 		lastEarningsBar.setBackground(Color.WHITE);
 		lastEarningsBar.setBounds(0, 98, 938, 514);
 		frame.getContentPane().add(lastEarningsBar);
 		lastEarningsBar.setLayout(null);
 		JLabel label_laseEarnings = new JLabel("\uC9C0\uB09C \uD310\uB9E4\uAE30\uB85D [DATABASE]");
 		label_laseEarnings.setHorizontalAlignment(SwingConstants.CENTER);
-		label_laseEarnings.setFont(new Font("±¼¸²", Font.BOLD, 17));
+		label_laseEarnings.setFont(new Font("êµ´ë¦¼", Font.BOLD, 17));
 		label_laseEarnings.setBounds(355, 12, 243, 40);
 		lastEarningsBar.add(label_laseEarnings);
 		lastEarningsBar.setVisible(false);
 		
-		/*Table ¸Ş´º ¸ñ·Ï*/
+		/*Table ë©”ë‰´ ëª©ë¡*/
 
 		
 		
-		/* Áö³­ ÆÇ¸Å±â·Ï table ¼Ó¼º*/
+		/* ì§€ë‚œ íŒë§¤ê¸°ë¡ table ì†ì„±*/
 		table_last.getTableHeader().setReorderingAllowed(false);
 		table_last.setForeground(new Color(128, 0, 128));
-		table_last.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		table_last.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		table_last.setPreferredScrollableViewportSize(new Dimension(284, 348));
 		table_last.setFillsViewportHeight(true);
-		table_last.getColumn("³¯Â¥").setPreferredWidth(10); //width
-		table_last.getColumn("³¯Â¥").setCellRenderer(celAlignCenter); //align
-		table_last.getColumn("ÆÇ¸Å¼öÀÔ").setPreferredWidth(150); //width 
-		table_last.getColumn("ÆÇ¸Å¼öÀÔ").setCellRenderer(celAlignRight);
-		table_last.getColumn("ÆÇ¸ÅÁÖ¹®¼ö").setPreferredWidth(50); //width
-		table_last.getColumn("ÆÇ¸ÅÁÖ¹®¼ö").setCellRenderer(celAlignRight); //align
+		table_last.getColumn("ë‚ ì§œ").setPreferredWidth(10); //width
+		table_last.getColumn("ë‚ ì§œ").setCellRenderer(celAlignCenter); //align
+		table_last.getColumn("íŒë§¤ìˆ˜ì…").setPreferredWidth(150); //width 
+		table_last.getColumn("íŒë§¤ìˆ˜ì…").setCellRenderer(celAlignRight);
+		table_last.getColumn("íŒë§¤ì£¼ë¬¸ìˆ˜").setPreferredWidth(50); //width
+		table_last.getColumn("íŒë§¤ì£¼ë¬¸ìˆ˜").setCellRenderer(celAlignRight); //align
 		table_last.setRowHeight(27);
 		table_last.setEnabled(false);
 		table_last.setBounds(91, 68, 723, 409);
 		lastEarningsBar.add(table_last);
 		
-		/*¸Ş´º table ¼Ó¼º*/
+		/*ë©”ë‰´ table ì†ì„±*/
 		table_menu.setPreferredScrollableViewportSize(new Dimension(284, 348));
 		table_menu.setFillsViewportHeight(true);
-		table_menu.getColumn("¸Ş´º ÀÌ¸§").setCellRenderer(celAlignCenter); //align
-		table_menu.getColumn("¸Ş´º ÀÌ¸§").setPreferredWidth(150); //width 
-		table_menu.getColumn("°¡°İ").setCellRenderer(celAlignRight);
-		table_menu.getColumn("°¡°İ").setPreferredWidth(7);
+		table_menu.getColumn("ë©”ë‰´ ì´ë¦„").setCellRenderer(celAlignCenter); //align
+		table_menu.getColumn("ë©”ë‰´ ì´ë¦„").setPreferredWidth(150); //width 
+		table_menu.getColumn("ê°€ê²©").setCellRenderer(celAlignRight);
+		table_menu.getColumn("ê°€ê²©").setPreferredWidth(7);
 		table_menu.setRowHeight(33);
 		table_menu.setEnabled(false);
 		table_menu.setBounds(91, 68, 723, 409);
 		table_menu.getTableHeader().setReorderingAllowed(false);
 		table_menu.setForeground(new Color(128, 0, 128));
-		table_menu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		table_menu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		
 		
-		/* Áö³­ ÆÇ¸Å±â·Ï Ç¥ ½ºÅ©·Ñ */
+		/* ì§€ë‚œ íŒë§¤ê¸°ë¡ í‘œ ìŠ¤í¬ë¡¤ */
 		JScrollPane scrollPane_1 = new JScrollPane(table_last);
 		scrollPane_1.setEnabled(false);
 		scrollPane_1.setBounds(105, 68, 723, 409);
 		lastEarningsBar.add(scrollPane_1);
 		
 		
-		/* Áö³­ ÆÇ¸Å±â·ÏÀ» º¸¿©ÁÖ´Â ¹öÆ° */
+		/* ì§€ë‚œ íŒë§¤ê¸°ë¡ì„ ë³´ì—¬ì£¼ëŠ” ë²„íŠ¼ */
 		JButton ShowLastEarnings = new JButton("\uC9C0\uB09C \uD310\uB9E4\uAE30\uB85D \uBCF4\uAE30");
 		ShowLastEarnings.setBackground(new Color(216, 191, 216));
 		ShowLastEarnings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/* µğºñ Á¤º¸ table·Î ºÒ·¯¿À±â */selectRecord();
+				/* ë””ë¹„ ì •ë³´ tableë¡œ ë¶ˆëŸ¬ì˜¤ê¸° */selectRecord();
 				showEarnings();
 				addMenuBar.setVisible(false);
 				topBar.setVisible(true);
@@ -1432,20 +1431,20 @@ public class CafeTest {
 				lastEarningsBar.setVisible(true);
 				deleteMenuBar.setVisible(false);
 				setMenuBar.setVisible(false);
-				resetTime();
+				
 			}
 		});
-		ShowLastEarnings.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		ShowLastEarnings.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		ShowLastEarnings.setBounds(14, 13, 204, 32);
 		topBar.add(ShowLastEarnings);
 		
 
-		/* Áö³­ÆÇ¸Å±â·Ï Ã¢¿¡¼­ µ¹¾Æ°¡±â ¹öÆ° */
+		/* ì§€ë‚œíŒë§¤ê¸°ë¡ ì°½ì—ì„œ ëŒì•„ê°€ê¸° ë²„íŠ¼ */
 		JButton backto_laseEarnings = new JButton("\uB3CC\uC544\uAC00\uAE30");
 		backto_laseEarnings.setBackground(new Color(238, 232, 170));
 		backto_laseEarnings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*½Ã°£ ¼Â*/resetTime();
+				/*ì‹œê°„ ì…‹*/
 				addMenuBar.setVisible(false);
 				topBar.setVisible(true);
 				bottomMain.setVisible(true);
@@ -1454,33 +1453,33 @@ public class CafeTest {
 				deleteMenuBar.setVisible(false);
 			}
 		});
-		backto_laseEarnings.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		backto_laseEarnings.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		backto_laseEarnings.setBounds(819, 20, 105, 27);
 		lastEarningsBar.add(backto_laseEarnings);
 		
 		
-		JLabel ques = new JLabel("Áö³­ ±â·ÏÀ» ¸ğµÎ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
-		ques.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		JLabel ques = new JLabel("ì§€ë‚œ ê¸°ë¡ì„ ëª¨ë‘ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
+		ques.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		
-		/*Áö³­ ±â·Ï ¸ğµÎ ÃÊ±âÈ­ ¹öÆ°*/
+		/*ì§€ë‚œ ê¸°ë¡ ëª¨ë‘ ì´ˆê¸°í™” ë²„íŠ¼*/
 		JButton deleteall = new JButton("\uBAA8\uB4E0 \uAE30\uB85D \uCD08\uAE30\uD654");
 		deleteall.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int result = JOptionPane.showConfirmDialog(null, ques, "ÀúÀåµÈ Áö³­ ±â·Ï", JOptionPane.YES_NO_OPTION);
+				int result = JOptionPane.showConfirmDialog(null, ques, "ì €ì¥ëœ ì§€ë‚œ ê¸°ë¡", JOptionPane.YES_NO_OPTION);
 				if(result==JOptionPane.YES_OPTION) {
 					resetRecord();
 					resetRecords_DB resetrc = new resetRecords_DB();
-					JOptionPane.showMessageDialog(null, "¸ğµç ±â·ÏÀ» »èÁ¦Çß½À´Ï´Ù.", "Áö³­ ±â·Ï ÃÊ±âÈ­", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ëª¨ë“  ê¸°ë¡ì„ ì‚­ì œí–ˆìŠµë‹ˆë‹¤.", "ì§€ë‚œ ê¸°ë¡ ì´ˆê¸°í™”", JOptionPane.INFORMATION_MESSAGE);
 				}
 				lastEarningsBar.setVisible(false); lastEarningsBar.setVisible(true);
 			}
 		});
-		deleteall.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		deleteall.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		deleteall.setBackground(SystemColor.control);
 		deleteall.setBounds(17, 20, 180, 27);
 		lastEarningsBar.add(deleteall);
 		
-		/* ¸Ş´º¼öÁ¤ Ã¢¿¡¼­ µ¹¾Æ°¡±â ¹öÆ° */
+		/* ë©”ë‰´ìˆ˜ì • ì°½ì—ì„œ ëŒì•„ê°€ê¸° ë²„íŠ¼ */
 		JButton backto_setMenu = new JButton("\uB3CC\uC544\uAC00\uAE30");
 		backto_setMenu.setBackground(new Color(238, 232, 170));
 		backto_setMenu.setBounds(819, 16, 105, 27);
@@ -1495,14 +1494,14 @@ public class CafeTest {
 				setMenuBar.setVisible(false);
 				deleteMenuBar.setVisible(false);
 				
-				/*½Ã°£ ¼Â*/resetTime();
+				/*ì‹œê°„ ì…‹*/
 			}
 		});
-		backto_setMenu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		backto_setMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		setMenuBar.add(backto_setMenu);
 		
 		
-		/* ¸Ş´º »èÁ¦ Ã¢¿¡¼­ µ¹¾Æ°¡±â ¹öÆ° */
+		/* ë©”ë‰´ ì‚­ì œ ì°½ì—ì„œ ëŒì•„ê°€ê¸° ë²„íŠ¼ */
 		JButton backto_deleteMenu = new JButton("\uB3CC\uC544\uAC00\uAE30");
 		backto_deleteMenu.setBackground(new Color(238, 232, 170));
 		backto_deleteMenu.addActionListener(new ActionListener() {
@@ -1514,62 +1513,62 @@ public class CafeTest {
 				lastEarningsBar.setVisible(false);
 				deleteMenuBar.setVisible(false);
 				setMenuBar.setVisible(false);
-				resetTime();
+				
 			}
 		});
-		backto_deleteMenu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		backto_deleteMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		backto_deleteMenu.setBounds(819, 16, 105, 27);
 		deleteMenuBar.add(backto_deleteMenu);
 		
-		/* ¸Ş´º ¼öÁ¤Ã¢ÀÇ ¶óº§ */
+		/* ë©”ë‰´ ìˆ˜ì •ì°½ì˜ ë¼ë²¨ */
 		JLabel label_5 = new JLabel("\uBA54\uB274 \uC774\uB984\uC740 8\uC790 \uC774\uD558\uB97C \uAD8C\uC7A5\uD569\uB2C8\uB2E4.");
 		label_5.setForeground(new Color(205, 92, 92));
-		label_5.setFont(new Font("±¼¸²", Font.PLAIN, 13));
+		label_5.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 13));
 		label_5.setBounds(20, 145, 232, 26);
 		setIntoPanel.add(label_5);
 		
-		/* ¸Ş´º ¼öÁ¤Ã¢ÀÇ '¼öÁ¤ÇÏ±â' ¹öÆ° */
+		/* ë©”ë‰´ ìˆ˜ì •ì°½ì˜ 'ìˆ˜ì •í•˜ê¸°' ë²„íŠ¼ */
 		JButton reMenuBtn = new JButton("\uC218\uC815\uD558\uAE30");
 		reMenuBtn.setBackground(new Color(216, 191, 216));
 		reMenuBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				/*¸Ş´º ¼öÁ¤ Á¤º¸ ÀúÀå Àü¿¡ ÀÔ·Â ¿À·ù °Ë»ç*/
+				/*ë©”ë‰´ ìˆ˜ì • ì •ë³´ ì €ì¥ ì „ì— ì…ë ¥ ì˜¤ë¥˜ ê²€ì‚¬*/
 				if(reMenuNameField.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "ÀÔ·ÂµÈ ¸Ş´º ÀÌ¸§ÀÌ ¾ø½À´Ï´Ù.","ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE);  
+					JOptionPane.showMessageDialog(null, "ì…ë ¥ëœ ë©”ë‰´ ì´ë¦„ì´ ì—†ìŠµë‹ˆë‹¤.","ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE);  
 					return;
 				}
 				
-				/*¼ıÀÚ ÀÔ·Â ¾ÈÇßÀ»°æ¿ì*/
+				/*ìˆ«ì ì…ë ¥ ì•ˆí–ˆì„ê²½ìš°*/
 				if(reMenuPriceField.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "ÀÔ·ÂµÈ °¡°İÀÌ ¾ø½À´Ï´Ù.","ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE); 
+					JOptionPane.showMessageDialog(null, "ì…ë ¥ëœ ê°€ê²©ì´ ì—†ìŠµë‹ˆë‹¤.","ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE); 
 					int_newMenuPrice.setText(""); 
 					return;
 				}
 				
-				/*ÀÔ·Â¹ŞÀº °¡°İÀÌ ¼ıÀÚ°¡ ¸Â´ÂÁö ÆÇº°*/
+				/*ì…ë ¥ë°›ì€ ê°€ê²©ì´ ìˆ«ìê°€ ë§ëŠ”ì§€ íŒë³„*/
 				char tmp;
 				for(i=0; i<reMenuPriceField.getText().length(); i++) {
 					tmp = reMenuPriceField.getText().charAt(i);
 					if(Character.isDigit(tmp)==false) {
-						JOptionPane.showMessageDialog(null, "°¡°İÀº ¼ıÀÚ·Î¸¸ ÀÔ·ÂÇÏ¼¼¿ä.","ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "ê°€ê²©ì€ ìˆ«ìë¡œë§Œ ì…ë ¥í•˜ì„¸ìš”.","ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE);
 						reMenuPriceField.setText("");
 						return;
 					}
 				}
 				
-				//¸ğµç °æ¿ì°¡ ÈíÁ·ÇßÀ»^^¶§
+				//ëª¨ë“  ê²½ìš°ê°€ í¡ì¡±í–ˆì„^^ë•Œ
 				menu[numtemp].reMenu(reMenuNameField.getText(), Integer.parseInt(reMenuPriceField.getText()));
-				//¸Ş´º¸¦ ÈÄÈÊ^^¼öÁ¤ÇÕ´Ï´Ù. reMenu´Â ¸Ş´º¸¦ ¼öÁ¤ÇÏ´Â ¸Ş¼­µå¿¡¿ë.
+				//ë©”ë‰´ë¥¼ í›„í›—^^ìˆ˜ì •í•©ë‹ˆë‹¤. reMenuëŠ” ë©”ë‰´ë¥¼ ìˆ˜ì •í•˜ëŠ” ë©”ì„œë“œì—ìš©.
 				updateMenu_DB updateMenu_DB = new updateMenu_DB(Integer.toString(numtemp), reMenuNameField.getText(), reMenuPriceField.getText());
 				
 				
 				reMenuNameField.setText("");
 				reMenuPriceField.setText("");
-				/*¸Ş´º table °ª »õ·Î°íÄ§*/resetingMenuTable();
+				/*ë©”ë‰´ table ê°’ ìƒˆë¡œê³ ì¹¨*/resetingMenuTable();
 				
-				JLabel label102 = new JLabel("["+menu[numtemp].getMenuName()+"-"+menu[numtemp].getMenuPrice()+"¿ø]·Î ¼öÁ¤ ¿Ï·á");
-				label102.setFont(new Font("±¼¸²", Font.BOLD, 17));
+				JLabel label102 = new JLabel("["+menu[numtemp].getMenuName()+"-"+menu[numtemp].getMenuPrice()+"ì›]ë¡œ ìˆ˜ì • ì™„ë£Œ");
+				label102.setFont(new Font("êµ´ë¦¼", Font.BOLD, 17));
 				label102.setForeground(Color.MAGENTA);
 				JOptionPane.showMessageDialog(null, label102, "", JOptionPane.INFORMATION_MESSAGE);
 				
@@ -1579,48 +1578,48 @@ public class CafeTest {
 
 			}
 		});
-		reMenuBtn.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		reMenuBtn.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		reMenuBtn.setBounds(245, 140, 120, 45);
 		setIntoPanel.add(reMenuBtn);
 		
-		/* ±×Àú..±×·± ¶óº§ */
+		/* ê·¸ì €..ê·¸ëŸ° ë¼ë²¨ */
 		JLabel label1_setMenuBar = new JLabel("\uC218\uC815\uD560 \uC815\uBCF4");
 		label1_setMenuBar.setHorizontalAlignment(SwingConstants.CENTER);
-		label1_setMenuBar.setFont(new Font("±¼¸²", Font.BOLD, 18));
+		label1_setMenuBar.setFont(new Font("êµ´ë¦¼", Font.BOLD, 18));
 		label1_setMenuBar.setBounds(100, 10, 172, 35);
 		setIntoPanel.add(label1_setMenuBar);		
 		JLabel label2_setMenuBar = new JLabel("\uBA54\uB274 \uC774\uB984");
-		label2_setMenuBar.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		label2_setMenuBar.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		label2_setMenuBar.setBounds(20, 53, 86, 35);
 		setIntoPanel.add(label2_setMenuBar);	
 		JLabel label3_setMenuBar = new JLabel("\uAC00\uACA9");
-		label3_setMenuBar.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		label3_setMenuBar.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 18));
 		label3_setMenuBar.setBounds(20, 95, 128, 41);
 		setIntoPanel.add(label3_setMenuBar);
 		
 		
-		/* ¸Ş´º ¼öÁ¤Ã¢ÀÇ ¼öÁ¤Á¤º¸ ÇÊµå */
+		/* ë©”ë‰´ ìˆ˜ì •ì°½ì˜ ìˆ˜ì •ì •ë³´ í•„ë“œ */
 		reMenuNameField = new JTextField();
-		reMenuNameField.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		reMenuNameField.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		reMenuNameField.setBounds(117, 55, 190, 35);
 		setIntoPanel.add(reMenuNameField);
 		
 		reMenuNameField.setColumns(10);		
 		reMenuPriceField = new JTextField();
-		reMenuPriceField.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		reMenuPriceField.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		reMenuPriceField.setBounds(117, 100, 116, 35);
 		setIntoPanel.add(reMenuPriceField);
 		reMenuPriceField.setColumns(10);
 
 		
-		/* ¸Ş´º ¼öÁ¤Ã¢ÀÇ ¸Ş´º table ½ºÅ©·Ñ Á¤ÀÇ */
+		/* ë©”ë‰´ ìˆ˜ì •ì°½ì˜ ë©”ë‰´ table ìŠ¤í¬ë¡¤ ì •ì˜ */
 		JScrollPane scrollPane_2 = new JScrollPane(table_menu);
 		scrollPane_2.setBounds(69, 55, 348, 423);
 		scrollPane_2.setEnabled(false);
 		setMenuBar.add(scrollPane_2);
 		
 
-		/* Title¶óº§ ¼Ó¼º */
+		/* Titleë¼ë²¨ ì†ì„± */
 		JLabel TitleLabel = new JLabel("Dessert Cafe");
 		TitleLabel.setBackground(new Color(255, 192, 203));
 		TitleLabel.setForeground(new Color(218, 112, 214));
@@ -1630,70 +1629,73 @@ public class CafeTest {
 		topBar.add(TitleLabel);
 		
 	
-		/* ÇöÀçÆÇ¸Å±â·Ï label */
+		/* í˜„ì¬íŒë§¤ê¸°ë¡ label */
 		JLabel showEarnings = new JLabel("\uB204\uC801 \uD310\uB9E4\uC218\uC785/\uC8FC\uBB38\uC218");
 		showEarnings.setBackground(Color.WHITE);
 		showEarnings.setHorizontalAlignment(SwingConstants.CENTER);
-		showEarnings.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		showEarnings.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		showEarnings.setBounds(14, 59, 168, 29);
 		topBar.add(showEarnings);
 		
-		/* ÇöÀç ÆÇ¸Å¼öÀÔÀÌ Ç¥½ÃµÇ´Â txtÇÊµå */
+		/* í˜„ì¬ íŒë§¤ìˆ˜ì…ì´ í‘œì‹œë˜ëŠ” txtí•„ë“œ */
 		earnings = new JTextField();
 		earnings.setBackground(Color.WHITE);
 		earnings.setEditable(false);
 		earnings.setHorizontalAlignment(SwingConstants.RIGHT);
-		earnings.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		earnings.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		earnings.setBounds(185, 57, 142, 31);
 		topBar.add(earnings);
 		earnings.setColumns(10);
 		
-		/* ÇöÀç ÁÖ¹®·®ÀÌ Ç¥½ÃµÇ´Â txtÇÊµå */
+		/* í˜„ì¬ ì£¼ë¬¸ëŸ‰ì´ í‘œì‹œë˜ëŠ” txtí•„ë“œ */
 		amount = new JTextField();
 		amount.setBackground(Color.WHITE);
 		amount.setEditable(false);
 		amount.setHorizontalAlignment(SwingConstants.RIGHT);
-		amount.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		amount.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		amount.setBounds(325, 57, 60, 31);
 		topBar.add(amount);
 		amount.setColumns(10);
 		
-		/* ½Ç½Ã°£ ´©Àû ÆÇ¸Å·® Ç¥½Ã */
-		earnings.setText(Integer.toString(nowEarnings)+"¿ø");
-		amount.setText(Integer.toString(nowPays)+"°Ç");
+		/* ì‹¤ì‹œê°„ ëˆ„ì  íŒë§¤ëŸ‰ í‘œì‹œ */
+		earnings.setText(Integer.toString(nowEarnings)+"ì›");
+		amount.setText(Integer.toString(nowPays)+"ê±´");
 		
-		JLabel label100 = new JLabel("ÁÖ¹® Á¤º¸¸¦ ÀúÀåÇÏ¿´½À´Ï´Ù.");
-		label100.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		JLabel label100 = new JLabel("ì£¼ë¬¸ ì •ë³´ë¥¼ ì €ì¥í•˜ì˜€ìŠµë‹ˆë‹¤.");
+		label100.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		
-		/* ÇöÀç ÆÇ¸Å±â·ÏÀ» ÃÊ±âÈ­ÇÏ´Â ¹öÆ° */
+		/* í˜„ì¬ íŒë§¤ê¸°ë¡ì„ ì´ˆê¸°í™”í•˜ëŠ” ë²„íŠ¼ */
 		JButton resetButton = new JButton("\uCD08\uAE30\uD654");
 		resetButton.setBackground(new Color(255, 215, 0));
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectRecord();
-				/*±â·Ï ÃÊ±âÈ­ ¸Ş¼­µå*/resetEarnings();
-				earnings.setText(Integer.toString(nowEarnings)+"¿ø");
-				amount.setText(Integer.toString(nowPays)+"°Ç");
-				JOptionPane.showMessageDialog(null, label100,"ÃÊ±âÈ­",JOptionPane.INFORMATION_MESSAGE);
+				/*ê¸°ë¡ ì´ˆê¸°í™” ë©”ì„œë“œ*/resetEarnings();
+				earnings.setText(Integer.toString(nowEarnings)+"ì›");
+				amount.setText(Integer.toString(nowPays)+"ê±´");
+				JOptionPane.showMessageDialog(null, label100,"ì´ˆê¸°í™”",JOptionPane.INFORMATION_MESSAGE);
 				resetingMenuTable();
 			
 			}
 		});
-		resetButton.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		resetButton.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		resetButton.setBounds(389, 59, 87, 27);
 		topBar.add(resetButton);
 		
-		/* ÇöÀç ½Ã°£À» º¸¿©ÁÖ´Â txtÇÊµå */
+		/* í˜„ì¬ ì‹œê°„ì„ ë³´ì—¬ì£¼ëŠ” txtí•„ë“œ */
 		timeField = new JTextField();
 		timeField.setBackground(Color.WHITE);
-		timeField.setFont(new Font("±¼¸²", Font.BOLD, 17));
+		timeField.setFont(new Font("êµ´ë¦¼", Font.BOLD, 17));
 		timeField.setEditable(false);
 		timeField.setHorizontalAlignment(SwingConstants.CENTER);
 		timeField.setBounds(761, 14, 163, 32);
 		topBar.add(timeField);
 		timeField.setColumns(10);
 		
-		/* bottomMain¼Ó ¸Ş´º Ãß°¡ ¹öÆ° */
+		addTimeThread(); //íƒ€ì„ìŠ¤ë ˆë“œ ì¶”ê°€
+		
+		
+		/* bottomMainì† ë©”ë‰´ ì¶”ê°€ ë²„íŠ¼ */
 		JButton btn_addMenu = new JButton("\uBA54\uB274 \uCD94\uAC00");
 		btn_addMenu.setBackground(new Color(175, 238, 238));
 		btn_addMenu.addActionListener(new ActionListener() {
@@ -1704,14 +1706,14 @@ public class CafeTest {
 				lastEarningsBar.setVisible(false);
 				deleteMenuBar.setVisible(false);
 				setMenuBar.setVisible(false);
-				resetTime();
+				
 			}
 		});
-		btn_addMenu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		btn_addMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		btn_addMenu.setBounds(586, 56, 110, 31);
 		topBar.add(btn_addMenu);
 		
-		/* bottomMain¼Ó ¸Ş´º ¼öÁ¤ ¹öÆ° */
+		/* bottomMainì† ë©”ë‰´ ìˆ˜ì • ë²„íŠ¼ */
 		JButton btn_setMenu = new JButton("\uBA54\uB274 \uC218\uC815");
 		btn_setMenu.setBackground(new Color(175, 238, 238));
 		btn_setMenu.addActionListener(new ActionListener() {
@@ -1724,14 +1726,14 @@ public class CafeTest {
 				setMenuBar.setVisible(true);
 				deleteMenuBar.setVisible(false);
 				
-				resetTime();
+				
 			}
 		});
-		btn_setMenu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		btn_setMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		btn_setMenu.setBounds(700, 56, 110, 31);
 		topBar.add(btn_setMenu);
 		
-		/* bottomMain¼Ó ¸Ş´º »èÁ¦ ¹öÆ° */
+		/* bottomMainì† ë©”ë‰´ ì‚­ì œ ë²„íŠ¼ */
 		JButton btn_deleteMenu = new JButton("\uBA54\uB274 \uC0AD\uC81C");
 		btn_deleteMenu.setBackground(new Color(175, 238, 238));
 		btn_deleteMenu.addActionListener(new ActionListener() {
@@ -1743,59 +1745,59 @@ public class CafeTest {
 				lastEarningsBar.setVisible(false);
 				deleteMenuBar.setVisible(true);
 				setMenuBar.setVisible(false);
-				resetTime();
+				
 			}
 		});
-		btn_deleteMenu.setFont(new Font("±¼¸²", Font.PLAIN, 17));
+		btn_deleteMenu.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 17));
 		btn_deleteMenu.setBounds(814, 56, 110, 31);
 		topBar.add(btn_deleteMenu);
 		
-		/* ÁÖ¹® Á¤º¸ »èÁ¦ ½ºÇÇ³Ê */
+		/* ì£¼ë¬¸ ì •ë³´ ì‚­ì œ ìŠ¤í”¼ë„ˆ */
 		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
-		spinner.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		spinner.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		spinner.setBounds(215, 364, 49, 24);
 		bottomMain.add(spinner);
-		/* ÁÖ¹® Á¤º¸ »èÁ¦ ¶óº§ */
+		/* ì£¼ë¬¸ ì •ë³´ ì‚­ì œ ë¼ë²¨ */
 		JLabel lblNo = new JLabel("\uC644\uB8CC\uD55C \uC8FC\uBB38\uC815\uBCF4 NO.");
 		lblNo.setBackground(SystemColor.activeCaption);
-		lblNo.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		lblNo.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		lblNo.setBounds(56, 364, 158, 25);
 		bottomMain.add(lblNo);
-		/* ÁÖ¹® Á¤º¸ »èÁ¦ ¹öÆ° */
+		/* ì£¼ë¬¸ ì •ë³´ ì‚­ì œ ë²„íŠ¼ */
 		JButton btn_del_order = new JButton("Del");
 		btn_del_order.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(order[(int)(spinner.getValue())-1].isFilled()==true) {//ÇØ´ç ÁÖ¹®Á¤º¸°¡ ÀÖÀ¸¸é
-					for(i=0; i<orderLength; i++) { //°ªÀ» Ã£¾Æ »èÁ¦
+				if(order[(int)(spinner.getValue())-1].isFilled()==true) {//í•´ë‹¹ ì£¼ë¬¸ì •ë³´ê°€ ìˆìœ¼ë©´
+					for(i=0; i<orderLength; i++) { //ê°’ì„ ì°¾ì•„ ì‚­ì œ
 						if((int)spinner.getValue()==order[i].getOrdernum()) {
 							order[i].deleteOrder();
 						}
 					}
-					JOptionPane.showMessageDialog(null, spinner.getValue()+"¹ø ÁÖ¹®À» ¿Ï·áÇÏ¿´½À´Ï´Ù.","ÁÖ¹® Á¤º¸ »èÁ¦ ¿Ï·á",JOptionPane.INFORMATION_MESSAGE);
-				}else { //ÇØ´ç ÁÖ¹®Á¤º¸°¡ ¾øÀ¸¸é
-					JOptionPane.showMessageDialog(null, "ÇØ´ç ¹øÈ£ÀÇ ÁÖ¹® Á¤º¸°¡ ¾ø½À´Ï´Ù.","ÀÔ·Â ¿À·ù",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, spinner.getValue()+"ë²ˆ ì£¼ë¬¸ì„ ì™„ë£Œí•˜ì˜€ìŠµë‹ˆë‹¤.","ì£¼ë¬¸ ì •ë³´ ì‚­ì œ ì™„ë£Œ",JOptionPane.INFORMATION_MESSAGE);
+				}else { //í•´ë‹¹ ì£¼ë¬¸ì •ë³´ê°€ ì—†ìœ¼ë©´
+					JOptionPane.showMessageDialog(null, "í•´ë‹¹ ë²ˆí˜¸ì˜ ì£¼ë¬¸ ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.","ì…ë ¥ ì˜¤ë¥˜",JOptionPane.WARNING_MESSAGE);
 				}
 
-				/*ÁÖ¹®Á¤º¸ table °ª »õ·Î°íÄ§*/resetOrderInfoTable();
+				/*ì£¼ë¬¸ì •ë³´ table ê°’ ìƒˆë¡œê³ ì¹¨*/resetOrderInfoTable();
 				bottomMain.setVisible(false);
 				bottomMain.setVisible(true);
-				/*½Ã°£ ¼Â*/resetTime();
+				/*ì‹œê°„ ì…‹*/
 			}
 		});
 		btn_del_order.setBackground(new Color(255, 215, 0));
-		btn_del_order.setFont(new Font("±¼¸²", Font.PLAIN, 16));
+		btn_del_order.setFont(new Font("êµ´ë¦¼", Font.PLAIN, 16));
 		btn_del_order.setBounds(265, 363, 62, 27);
 		bottomMain.add(btn_del_order);
 		
-		/*DB¸Ş´º °¡Á®¿À±â*/pullupDBmenu();
-		/*ÇÁ·Î±×·¥ ÃÊ±â ½ÇÇà½Ã ½Ã°£ ÃÊ±âÈ­*/ resetTime();
+		/*DBë©”ë‰´ ê°€ì ¸ì˜¤ê¸°*/pullupDBmenu();
+		/*í”„ë¡œê·¸ë¨ ì´ˆê¸° ì‹¤í–‰ì‹œ ì‹œê°„ ì´ˆê¸°í™”*/ 
 		square.setVisible(false);
 		square.setVisible(true);
-		/* bottomMain ¼Ó ÁÖ¹®Á¤º¸ table »õ·Î°íÄ§ *///resetOrderInfoTable();
+		/* bottomMain ì† ì£¼ë¬¸ì •ë³´ table ìƒˆë¡œê³ ì¹¨ *///resetOrderInfoTable();
 		
 		
-		/* Ç¥ ¾Æ·¡ ÀÌ¹ÌÁö Ã·ºÎ */
+		/* í‘œ ì•„ë˜ ì´ë¯¸ì§€ ì²¨ë¶€ */
 		Image img = null;
 		File sourceimage = new File("img/java.png");
 		try {
@@ -1952,7 +1954,7 @@ public class CafeTest {
 		imgLabel11.setBounds(770, 120, 100, 100);
 		deleteMenuBar.add(imgLabel11);
 
-		/*¾ÆÀÌÄÜ ÀÌ¹ÌÁö ¼³Á¤*/
+		/*ì•„ì´ì½˜ ì´ë¯¸ì§€ ì„¤ì •*/
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Image iconimg = kit.getImage("img/cf.png");
 		frame.setIconImage(iconimg);	

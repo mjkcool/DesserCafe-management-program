@@ -15,12 +15,12 @@ public class SortDB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
 			
 			for(int i = 0; i < 12; i++)
@@ -28,13 +28,13 @@ public class SortDB {
 				String SQL = "select * from menu where menu_id="+i+";";
 				rs = stmt.executeQuery(SQL);
 				
-				if(!rs.next()) { //ÇöÀç Ä­ÀÌ ºñ¾îÀÖÀ¸¸é
+				if(!rs.next()) { //í˜„ì¬ ì¹¸ì´ ë¹„ì–´ìˆìœ¼ë©´
 					int j = i+1;
 					for(; j < 12; j++) {
 						String SQL1 = "select * from menu where menu_id="+j+";";
 						rs = stmt.executeQuery(SQL1);
-						if(rs.next()){ //µŞ¿­ÀÌ ¾Èºñ¾îÀÖÀ¸¸é
-							//±³Ã¼°¡ ¾Æ´Ñ µŞ¿­ÀÇ Á¤º¸¸¦ ²ø¾î(º¹»ç) ÀúÀå.
+						if(rs.next()){ //ë’·ì—´ì´ ì•ˆë¹„ì–´ìˆìœ¼ë©´
+							//êµì²´ê°€ ì•„ë‹Œ ë’·ì—´ì˜ ì •ë³´ë¥¼ ëŒì–´(ë³µì‚¬) ì €ì¥.
 							String SQL2 = "update menu set menu_id="+rs.getInt("menu_id")+", menu_name='"+rs.getString("menu_name")+"', price="+rs.getInt("price")+" where menu_id="+i+";";
 							stmt.executeUpdate(SQL2);
 							String SQL3 = "delete from menu where menu_id="+j+";";
@@ -96,4 +96,3 @@ public class SortDB {
 		
 	
 }
-

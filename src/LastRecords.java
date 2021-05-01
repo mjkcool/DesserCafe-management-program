@@ -1,36 +1,36 @@
 public class LastRecords{
 	
-		/*Á¦¸ñ*/private String date;
-		/*Áö³­ ÆÇ¸Å¼öÀÔ*/private int earnings_record;
-		/*Áö³­ ÆÇ¸Å·®*/ private int sales_record;
+		/*ì œëª©*/private String date;
+		/*ì§€ë‚œ íŒë§¤ìˆ˜ì…*/private int earnings_record;
+		/*ì§€ë‚œ íŒë§¤ëŸ‰*/ private int sales_record;
 		
-		/*ÀúÀåÇÒ ¼ö ÀÖ´Â ±â·Ï °³¼öÀÇ ÇÑµµ - º¯°æ °¡´É*/static int recordsIndex = 14;
+		/*ì €ì¥í•  ìˆ˜ ìˆëŠ” ê¸°ë¡ ê°œìˆ˜ì˜ í•œë„ - ë³€ê²½ ê°€ëŠ¥*/static int recordsIndex = 14;
 
-		/* ÃÊ±â »ı¼ºÀÚ , ÃÊ±âÈ­ */
+		/* ì´ˆê¸° ìƒì„±ì , ì´ˆê¸°í™” */
 		public LastRecords() {
 			date = "";
 			earnings_record = 0;
 			sales_record = 0;
 		}
 		
-		/*»ç¿ëÀÚ¿¡ ÀÇÇÑ ÀüÃ¼ setter*/
+		/*ì‚¬ìš©ìì— ì˜í•œ ì „ì²´ setter*/
 		public void setRecord(String date, int earnings, int sales) {
 			this.date = date;
 			this.earnings_record = earnings;
 			this.sales_record = sales;
 		}
 		
-		/*Á¦¸ñ getter*/
+		/*ì œëª© getter*/
 		public String getDate() {
 			return date;
 		}
 
-		/*Áö³­ ÆÇ¸Å¼öÀÔ getter*/
+		/*ì§€ë‚œ íŒë§¤ìˆ˜ì… getter*/
 		public int getEarnings_record() {
 			return earnings_record;
 		}
 
-		/*Áö³­ ÆÇ¸Å·® getter*/
+		/*ì§€ë‚œ íŒë§¤ëŸ‰ getter*/
 		public int getSales_record() {
 			return sales_record;
 		}

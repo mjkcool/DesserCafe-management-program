@@ -12,19 +12,19 @@ public class selectLastRecords_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
-			//¸Ş´º ºÒ·¯¿À±â
+			//ë©”ë‰´ ë¶ˆëŸ¬ì˜¤ê¸°
 			int i=Integer.parseInt(i1);
 			String SQL = "select recordeddate, income, ordernum from lastrecord where lr_id="+i+";";
 			rs=stmt.executeQuery(SQL);
 			
-			//DB¿¡¼­ ºÒ·¯¿Â Áö³­ ±â·Ï ÀÌ¸§°ú °ª Ãß°¡
+			//DBì—ì„œ ë¶ˆëŸ¬ì˜¨ ì§€ë‚œ ê¸°ë¡ ì´ë¦„ê³¼ ê°’ ì¶”ê°€
 			while(rs.next()){
 				
 				CafeTest.record[index].setRecord(rs.getString("recordeddate"),rs.getInt("income"),rs.getInt("ordernum"));

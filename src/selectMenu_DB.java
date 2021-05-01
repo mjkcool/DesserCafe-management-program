@@ -14,19 +14,19 @@ public class selectMenu_DB {
 		
 		try
 		{
-			//µå¶óÀÌ¹ö ¿¬°á
+			//ë“œë¼ì´ë²„ ì—°ê²°
 			Class.forName("org.sqlite.JDBC");
-			//mySQLÁ¢¼Ó
+			//mySQLì ‘ì†
 			conn = DriverManager.getConnection(url);
 			System.out.println("SQLite DB connected");
-			//DB Á¢¼Ó
+			//DB ì ‘ì†
 			stmt = conn.createStatement();
-			//¸Ş´º ºÒ·¯¿À±â
+			//ë©”ë‰´ ë¶ˆëŸ¬ì˜¤ê¸°
 			int i=Integer.parseInt(i1);
 			String SQL = "select menu_name, price from menu where menu_id="+i+";";
 			rs=stmt.executeQuery(SQL);
 			
-			//DB¿¡¼­ ºÒ·¯¿Â ¸Ş´º ÀÌ¸§°ú °ª Ãß°¡
+			//DBì—ì„œ ë¶ˆëŸ¬ì˜¨ ë©”ë‰´ ì´ë¦„ê³¼ ê°’ ì¶”ê°€
 			while(rs.next()){
 				CafeTest.menu[i].reMenu(rs.getString("menu_name"),rs.getInt("price"));
 
@@ -79,4 +79,3 @@ public class selectMenu_DB {
 
 
 	}
-

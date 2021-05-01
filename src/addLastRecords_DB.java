@@ -1,6 +1,6 @@
 import java.sql.*;
 
-/*Áö³­ ±â·Ï º¸±â ºÎºĞÀÇ µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â Å¬·¡½º*/
+/*ì§€ë‚œ ê¸°ë¡ ë³´ê¸° ë¶€ë¶„ì˜ ë°ì´í„°ë¥¼ ì €ì¥í•˜ëŠ” í´ë˜ìŠ¤*/
 public class addLastRecords_DB {	
 		public addLastRecords_DB(String sid, String sdate, String sincome, String sordernum) {
 			String url = "jdbc:sqlite:DessertCafe.db";
@@ -12,28 +12,28 @@ public class addLastRecords_DB {
 			
 			try
 			{
-				//µå¶óÀÌ¹ö ¿¬°á
+				//ë“œë¼ì´ë²„ ì—°ê²°
 				Class.forName("org.sqlite.JDBC");
-				//mySQLÁ¢¼Ó
+				//mySQLì ‘ì†
 				conn = DriverManager.getConnection(url);
 				System.out.println("SQLite DB connected");
-				//DB Á¢¼Ó
+				//DB ì ‘ì†
 				stmt = conn.createStatement();
-				//µ¥ÀÌÅÍ Çü DB¿¡ ¸Â°Ô º¯°æ
+				//ë°ì´í„° í˜• DBì— ë§ê²Œ ë³€ê²½
 				int id=Integer.parseInt(sid);
 				int income = Integer.parseInt(sincome);
 				int ordernum = Integer.parseInt(sordernum);
 				
 				int i = 0;
 				for(; i < LastRecords.recordsIndex; i++)
-				{   //recordsIndexÀÇ ÀÎµ¦½º
+				{   //recordsIndexì˜ ì¸ë±ìŠ¤
 					String SQL1 = "select * from lastrecord where lr_id="+i+";";
-					rs/*Æ÷ÀÎÅÍ°¡ À§Ä¡ÇÑ Çà(ÃÊ±â:0)*/ = stmt.executeQuery(SQL1);
-					if(!rs.next())  //°ğÀå ¼±ÅÃÇÑ ÇàÀÌ ºñ¾îÀÖ´Â°æ¿ì(Æ÷ÀÎÅÍ¸¦ ´ÙÀ½ÇàÀ¸·Î ÀÌµ¿ÇÏ¸é ÀÌÀü ÇàÀÌ ¼±ÅÃµÊ) 
-						break; //¼±ÅÃ°úÁ¤À» ³¡³½´ç
+					rs/*í¬ì¸í„°ê°€ ìœ„ì¹˜í•œ í–‰(ì´ˆê¸°:0)*/ = stmt.executeQuery(SQL1);
+					if(!rs.next())  //ê³§ì¥ ì„ íƒí•œ í–‰ì´ ë¹„ì–´ìˆëŠ”ê²½ìš°(í¬ì¸í„°ë¥¼ ë‹¤ìŒí–‰ìœ¼ë¡œ ì´ë™í•˜ë©´ ì´ì „ í–‰ì´ ì„ íƒë¨) 
+						break; //ì„ íƒê³¼ì •ì„ ëë‚¸ë‹¹
 				}//end of for			
 				
-				//»õ ±â·ÏÀ» Æ÷ÀÎÅÍ°¡ °¡¸®Å°°í ÀÖ´Â ¿­¿¡ Ãß°¡
+				//ìƒˆ ê¸°ë¡ì„ í¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ê³  ìˆëŠ” ì—´ì— ì¶”ê°€
 				String SQL = "insert into lastrecord(lr_id, recordeddate, income, ordernum) values(" + id + ",'"+sdate +"',"+income+","+ ordernum + ");";
 				stmt.executeUpdate(SQL);
 				

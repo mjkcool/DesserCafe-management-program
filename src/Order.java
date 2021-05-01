@@ -1,17 +1,17 @@
 import java.util.Arrays;
 
 class Order{	
-		/*ÁÖ¹®ÇÒ ¼ö ÀÖ´Â ¸Ş´º Á¾·ùÀÇ ÇÑµµ(ÀÓ½Ã°ª ÀúÀå)*/ 
+		/*ì£¼ë¬¸í•  ìˆ˜ ìˆëŠ” ë©”ë‰´ ì¢…ë¥˜ì˜ í•œë„(ì„ì‹œê°’ ì €ì¥)*/ 
 		static final int ordermenuLength = 2;
 		
-		/*ÀÌ ÀÎ½ºÅÏ½º°¡ ºñ¾îÀÖ´ÂÁö¿¡ ´ëÇÑ ¿©ºÎ*/ private boolean isFilled = false;
-		/*[sameline¡å]ÁÖ¹®¸Ş´º ÀÌ¸§ ¹è¿­*/ private String orderName[] = new String[ordermenuLength];
-		/*[sameline¡ß]ÁÖ¹®¸Ş´º ¼ö·® ¹è¿­*/ private int orderQuantity[] = new int[ordermenuLength];
-		/*[sameline¡ã]°áÁ¦±İ¾× ¹è¿­*/ private int finalPrice;
-		/*ÁÖ¹®(Áøµ¿º§)¹øÈ£*/ private int ordernum;
+		/*ì´ ì¸ìŠ¤í„´ìŠ¤ê°€ ë¹„ì–´ìˆëŠ”ì§€ì— ëŒ€í•œ ì—¬ë¶€*/ private boolean isFilled = false;
+		/*[samelineâ–¼]ì£¼ë¬¸ë©”ë‰´ ì´ë¦„ ë°°ì—´*/ private String orderName[] = new String[ordermenuLength];
+		/*[samelineâ—†]ì£¼ë¬¸ë©”ë‰´ ìˆ˜ëŸ‰ ë°°ì—´*/ private int orderQuantity[] = new int[ordermenuLength];
+		/*[samelineâ–²]ê²°ì œê¸ˆì•¡ ë°°ì—´*/ private int finalPrice;
+		/*ì£¼ë¬¸(ì§„ë™ë²¨)ë²ˆí˜¸*/ private int ordernum;
 		
 		
-		/*ÃÊ±â »ı¼ºÀÚ method, ÁÖ¹® Á¤º¸ »èÁ¦ ¸Ş¼­µå*/
+		/*ì´ˆê¸° ìƒì„±ì method, ì£¼ë¬¸ ì •ë³´ ì‚­ì œ ë©”ì„œë“œ*/
 		public Order() {
 			for(int i=0; i<ordermenuLength; i++) {
 				orderName[i] = "";
@@ -22,17 +22,17 @@ class Order{
 			isFilled = false;
 		}
 		
-		/*¡Ü¢Â¢º¢ºÁÖ¹® Á¤º¸ Ãß°¡ ¸Ş¼­µå¢¸¢¸¢Â¡Ü*/
+		/*â—â—ˆâ–¶â–¶ì£¼ë¬¸ ì •ë³´ ì¶”ê°€ ë©”ì„œë“œâ—€â—€â—ˆâ—*/
 		public void reOrder(String name[], int Quant[], int price, int ordernum) {
 			isFilled = true;
 			this.orderName[0] = name[0]; this.orderName[1] = name[1];
 			this.orderQuantity[0] = Quant[0]; this.orderQuantity[1] = Quant[1];
 			this.finalPrice = price; 
-			this.ordernum = ordernum; //Áøµ¿º§ ¹øÈ£
+			this.ordernum = ordernum; //ì§„ë™ë²¨ ë²ˆí˜¸
 		}
 		
 		
-		/*ÁÖ¹®Á¤º¸ »èÁ¦ ¸Ş¼­µå*/
+		/*ì£¼ë¬¸ì •ë³´ ì‚­ì œ ë©”ì„œë“œ*/
 		public void deleteOrder() {
 			for(int i=0; i<ordermenuLength; i++) {
 				orderName[i] = "";
@@ -44,32 +44,32 @@ class Order{
 		}
 
 		
-		/* Á¤º¸ Â÷ÀÖ´Â À¯¹« ¹İÈ¯ */
+		/* ì •ë³´ ì°¨ìˆëŠ” ìœ ë¬´ ë°˜í™˜ */
 		public boolean isFilled() {
 			return isFilled;
 		}
 
-		/* ÁÖ¹®¸Ş´º ¹İÈ¯ */
+		/* ì£¼ë¬¸ë©”ë‰´ ë°˜í™˜ */
 		public String getOrderName(int n) {
 			return orderName[n];
 		}
 
-		/* ÁÖ¹®·® ¹İÈ¯ */
+		/* ì£¼ë¬¸ëŸ‰ ë°˜í™˜ */
 		public int getOrderQuantity(int n) {
 			return orderQuantity[n];
 		}
 
-		/* ÃÑ°áÁ¦±İ¾× ¹İÈ¯ */
+		/* ì´ê²°ì œê¸ˆì•¡ ë°˜í™˜ */
 		public int getFinalPrice() {
 			return finalPrice;
 		}
 		
-		/* ÁÖ¹®¹øÈ£ ¹İÈ¯ */
+		/* ì£¼ë¬¸ë²ˆí˜¸ ë°˜í™˜ */
 		public int getOrdernum() {
 			return ordernum;
 		}
 		
-		/* ÁÖ¹® ¹øÈ£ ¼öÁ¤ */
+		/* ì£¼ë¬¸ ë²ˆí˜¸ ìˆ˜ì • */
 		public int setOrdernum(int num) {
 			return this.ordernum = num;
 		}
@@ -84,4 +84,3 @@ class Order{
 		
 	
 }
-
